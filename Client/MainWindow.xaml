@@ -1,0 +1,30 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client.Controls"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Journeymate" Height="720" Width="1280">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="Img\Journeymate_logo.png" Height="40" Width="40" Stretch="UniformToFill" Margin="0,15,0,0" VerticalAlignment="Top"/>
+
+        <ListBox SelectionChanged="Navigator" VerticalAlignment="Center" SelectionMode="Single" x:Name="NavigationBar" BorderThickness="0" Grid.Column="0">
+            <local:NavButton PagePath="/Pages/Page1.xaml" Padding="20" Width="75" Height="75" ImagePath="Img\Search.png"/>
+            <local:NavButton Padding="20" Width="75" Height="75" ImagePath="Img\List.png"/>
+            <local:NavButton Padding="20" Width="75" Height="75" ImagePath="Img\Group 6.png"/>
+            <local:NavButton Padding="20" Width="75" Height="75" ImagePath="Img\Vector.png"/>
+            <local:NavButton Padding="20" Width="75" Height="75" ImagePath="Img\Profile.png"/>
+        </ListBox>
+
+        <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden" Grid.Column="1"  Background="#F3F3F3">
+
+        </Frame>
+    </Grid>
+</Window>
