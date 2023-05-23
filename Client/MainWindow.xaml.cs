@@ -1,5 +1,4 @@
-﻿using Client.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,13 +10,12 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Client
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para Window1.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -26,10 +24,29 @@ namespace Client
             InitializeComponent();
         }
 
-        private void Navigator(object sender, SelectionChangedEventArgs e)
+        private void Navigator_Page(object sender, SelectionChangedEventArgs e)
         {
-            var selectedPage = NavigationBar.SelectedItem as NavButton;
-            PageFrame.Navigate(selectedPage.PagePath);
+            if (TabItem_Explorer.IsSelected)
+            {
+                Frame_Page.Navigate(new Uri("/Pages/Page_Explorer.xaml", UriKind.Relative));
+            }
+            else if (TabItem_MyLists.IsSelected)
+            {
+                Frame_Page.Navigate(new Uri("/Pages/Page_MyLists.xaml", UriKind.Relative));
+            }
+            else if (TabItem_AddRoutine.IsSelected)
+            {
+                Frame_Page.Navigate(new Uri("/Pages/Page_AddRoutine.xaml", UriKind.Relative));
+            }
+            else if(TabItem_Favorites.IsSelected)
+            {
+                Frame_Page.Navigate(new Uri("/Pages/Page_Favorites.xaml", UriKind.Relative));
+            }
+            else if(TabItem_Profile.IsSelected)
+            {
+                Frame_Page.Navigate(new Uri("/Pages/Page_Login.xaml", UriKind.Relative));
+            }
         }
+
     }
 }
