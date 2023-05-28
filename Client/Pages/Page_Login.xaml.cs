@@ -25,17 +25,8 @@ namespace Client.Pages
             InitializeComponent();
         }
 
-        private void Button_ForgotPassword_Clic(object sender, MouseButtonEventArgs e)
-        {
-
-        }
 
         private void Button_Login_Clic(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
         }
@@ -43,6 +34,20 @@ namespace Client.Pages
         private void Button_SignUp_Clic(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void TextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBox TextBox = (TextBox)sender;
+            TextBox.Padding = new Thickness(20, 0, 10, 0); // Ajusta el valor del Padding para el espacio deseado
+            TextBox.VerticalContentAlignment = VerticalAlignment.Center;
+        }
+
+        private void PasswordBox_Loaded(object sender, RoutedEventArgs e)
+        {
+              PasswordBox passwordBox = (PasswordBox)sender;
+              passwordBox.Padding = new Thickness(20, 0, 10, 0); // Ajusta el valor del Padding para el espacio deseado
+              passwordBox.VerticalContentAlignment = VerticalAlignment.Center;
         }
     }
 }

@@ -36,7 +36,7 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <Image Source="/Img/Icon_Search.png" Height="24" Width="24" Stretch="UniformToFill"/>
-                            <TextBlock HorizontalAlignment="Center" Text="Explorar" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="13" FontFamily="inter" FontWeight="DemiBold" Text="Explorar" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
@@ -45,7 +45,7 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <Image Source="/Img/Icon_List.png" Height="24" Width="24" Stretch="UniformToFill"/>
-                            <TextBlock HorizontalAlignment="Center" Text="Mis Listas" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="13" FontFamily="inter" FontWeight="DemiBold" Text="Mis Listas" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
@@ -62,7 +62,7 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <Image Source="/Img/Icon_Favorites.png" Height="23" Width="23" Stretch="Fill"/>
-                            <TextBlock HorizontalAlignment="Center" Text="Favoritos" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="13" FontFamily="inter" FontWeight="DemiBold" Text="Favoritos" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
@@ -71,7 +71,7 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <Image Source="/Img/Icon_Profile.png" Height="24" Width="24" Stretch="UniformToFill"/>
-                            <TextBlock HorizontalAlignment="Center" Text="Perfil" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="13" FontFamily="inter" FontWeight="DemiBold" Text="Perfil" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
