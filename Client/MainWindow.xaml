@@ -1,30 +1,85 @@
 ﻿<Window x:Class="Client.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Client.Controls"
+        xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
         Title="Journeymate" Height="720" Width="1280">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Image Source="Img\Journeymate_logo.png" Height="40" Width="40" Stretch="UniformToFill" Margin="0,15,0,0" VerticalAlignment="Top"/>
+        <materialDesign:Card Width="100" Grid.Column="0">
+            <TabControl Width="100" SelectionChanged="Navigator_Page"
+                materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
+                SnapsToDevicePixels="True"
+                Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+                TabStripPlacement="Left">
 
-        <ListBox SelectionChanged="Navigator" VerticalAlignment="Center" SelectionMode="Single" x:Name="NavigationBar" BorderThickness="0" Grid.Column="0">
-            <local:NavButton PagePath="/Pages/Page1.xaml" Padding="20" Width="75" Height="75" ImagePath="Img\Search.png"/>
-            <local:NavButton Padding="20" Width="75" Height="75" ImagePath="Img\List.png"/>
-            <local:NavButton Padding="20" Width="75" Height="75" ImagePath="Img\Group-6.png"/>
-            <local:NavButton Padding="20" Width="75" Height="75" ImagePath="Img\Vector.png"/>
-            <local:NavButton Padding="20" Width="75" Height="75" ImagePath="Img\Profile.png"/>
-        </ListBox>
+                <materialDesign:NavigationRailAssist.FloatingContent>
+                    <Image Source="Img/Logo_Journeymate.png" Margin="0,10,0,100" Height="45" Width="45" Stretch="Fill"/>
+                </materialDesign:NavigationRailAssist.FloatingContent>
 
-        <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden" Grid.Column="1"  Background="#F3F3F3">
+                <TabItem Width="100" x:Name="TabItem_Explorer">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <Image Source="/Img/Icon_Search.png" Height="24" Width="24" Stretch="UniformToFill"/>
+                            <TextBlock HorizontalAlignment="Center" Text="Explorar" />
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
 
-        </Frame>
+                <TabItem Width="100" x:Name="TabItem_MyLists">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <Image Source="/Img/Icon_List.png" Height="24" Width="24" Stretch="UniformToFill"/>
+                            <TextBlock HorizontalAlignment="Center" Text="Mis Listas" />
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+
+                <TabItem Width="100" x:Name="TabItem_AddRoutine">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <Image Source="/Img/Icon_Add.png" Height="30" Width="30" Stretch="UniformToFill"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+
+                <TabItem Width="100" x:Name="TabItem_Favorites">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <Image Source="/Img/Icon_Favorites.png" Height="23" Width="23" Stretch="Fill"/>
+                            <TextBlock HorizontalAlignment="Center" Text="Favoritos" />
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+
+                <TabItem Width="100" x:Name="TabItem_Profile">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <Image Source="/Img/Icon_Profile.png" Height="24" Width="24" Stretch="UniformToFill"/>
+                            <TextBlock HorizontalAlignment="Center" Text="Perfil" />
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>
+            </TabControl>
+        </materialDesign:Card>
+
+        <Frame x:Name="Frame_Page" NavigationUIVisibility="Hidden" Grid.Column="1"/>
+
     </Grid>
 </Window>
+

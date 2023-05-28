@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Client.Pages
 {
     /// <summary>
-    /// Lógica de interacción para Page1.xaml
+    /// Lógica de interacción para Page_AddRoutine.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class Page_AddRoutine : Page
     {
-        public Page1()
+        public Page_AddRoutine()
         {
             InitializeComponent();
         }
