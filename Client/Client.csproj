@@ -109,9 +109,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Img\Group 6.png" />
+    <ProjectReference Include="..\Logic\Logic.csproj">
+      <Project>{c880b6bb-4fdc-48e7-86d9-0d498a03957d}</Project>
+      <Name>Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{b3c126e8-ff2b-43f5-b128-098f19a4c118}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Group-6.png" />
     <Resource Include="Img\Journeymate_logo.png" />
     <Resource Include="Img\List.png" />
     <Resource Include="Img\profile.png" />

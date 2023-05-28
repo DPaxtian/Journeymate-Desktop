@@ -18,7 +18,7 @@
         <ListBox SelectionChanged="Navigator" VerticalAlignment="Center" SelectionMode="Single" x:Name="NavigationBar" BorderThickness="0" Grid.Column="0">
             <local:NavButton PagePath="/Pages/Page1.xaml" Padding="20" Width="75" Height="75" ImagePath="Img\Search.png"/>
             <local:NavButton Padding="20" Width="75" Height="75" ImagePath="Img\List.png"/>
-            <local:NavButton Padding="20" Width="75" Height="75" ImagePath="Img\Group 6.png"/>
+            <local:NavButton Padding="20" Width="75" Height="75" ImagePath="Img\Group-6.png"/>
             <local:NavButton Padding="20" Width="75" Height="75" ImagePath="Img\Vector.png"/>
             <local:NavButton Padding="20" Width="75" Height="75" ImagePath="Img\Profile.png"/>
         </ListBox>
