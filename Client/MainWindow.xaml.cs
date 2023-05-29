@@ -22,9 +22,8 @@ namespace Client
     public partial class MainWindow : Window
     {
         public static MainWindow Instance { get; private set; }
-
-
         public static User UserLogged { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -51,7 +50,14 @@ namespace Client
             }
             else if(TabItem_Profile.IsSelected)
             {
-                Frame_Page.Navigate(new Uri("/Pages/Page_Login.xaml", UriKind.Relative));
+                if (UserLogged != null)
+                {
+                    Frame_Page.Navigate(new Uri("/Pages/Page_Profile.xaml", UriKind.Relative));
+                }
+                else
+                {
+                    Frame_Page.Navigate(new Uri("/Pages/Page_Login.xaml", UriKind.Relative));
+                }
             }
         }
 
