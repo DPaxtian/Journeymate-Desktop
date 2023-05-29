@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,6 +21,8 @@ namespace Client
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public static User UserLogged { get; set; }
         public MainWindow()
         {
             InitializeComponent();

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Class1
+    public partial class ApiResponseUser
     {
+        public int code { get; set; }
+        public User msg { get; set; }
     }
 }

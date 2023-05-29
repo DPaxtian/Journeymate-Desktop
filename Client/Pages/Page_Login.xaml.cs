@@ -33,9 +33,10 @@ namespace Client.Pages
             {
                 try
                 {
-                   int codeStatus = await Autentication.Login(TextBox_Email.Text, PasswordBox_Password.Password);
-                    if (codeStatus == (int)StatusCode.Ok)
+                   User userToLogin = await Autentication.Login(TextBox_Email.Text, PasswordBox_Password.Password);
+                    if (userToLogin != null)
                     {
+                        MainWindow.UserLogged = userToLogin;
                         MessageBox.Show("Login exitoso");
                     }
                     else

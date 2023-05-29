@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Security.AccessControl;
 using System.Text.Json;
+using Newtonsoft;
 
 namespace Logic
 {
@@ -15,9 +16,9 @@ namespace Logic
     {
         private static string apiVersion = "v1";
 
-        public static async Task<int> Login(string emailToLogin, string password)
+        public static async Task<User> Login(string emailToLogin, string password)
         {
-            int codeStatus = (int)StatusCode.Unautorized;
+            User userValid = null;
             try
             {
                 HttpClient server = new HttpClient();
@@ -32,9 +33,14 @@ namespace Logic
                 HttpContent contentToSend = new StringContent(dataToSend, Encoding.UTF8, "application/json");
                 HttpResponseMessage messageResponse = await server.PostAsync(url, contentToSend);
 
+
                 if (messageResponse.IsSuccessStatusCode)
                 {
-                    codeStatus = (int)messageResponse.StatusCode;
+                    string jsonResponde = await messageResponse.Content.ReadAsStringAsync();
+                    ApiResponseUser responseDescerialize = JsonSerializer.Deserialize<ApiResponseUser>(jsonResponde);
+                    User userLogin = responseDescerialize.msg;
+
+                    userValid = userLogin;
                 }
             }
             catch (Exception ex)
@@ -43,7 +49,7 @@ namespace Logic
                     ex);
             }
 
-            return codeStatus;
+            return userValid;
         }
 
     }
