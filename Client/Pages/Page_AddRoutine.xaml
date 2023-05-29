@@ -1,14 +1,80 @@
 ﻿<Page x:Class="Client.Pages.Page_AddRoutine"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Client.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1180"
       Title="Page_AddRoutine">
 
-    <Grid>
+    <Page.Resources>
+        <ImageBrush x:Key="AddRoutine_Background" Opacity="1" ImageSource="/Img/AddRoutine_Background.jpg" Stretch="UniformToFill"/>
+    </Page.Resources>
+
+    <Grid Background="#f3f3f3">
+        <Border Background="{StaticResource AddRoutine_Background}" BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Width="1100" Height="650">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <Label Content="Agregar rutina" Foreground="#f3f3f3" FontWeight="SemiBold" FontFamily="Inter" Margin="30,10,0,0"  FontSize="26"/>
+                    <Label Content="Título" Foreground="#f3f3f3" FontWeight="SemiBold" FontFamily="Inter" Margin="30,10,0,0"  FontSize="20"/>
+                    <TextBox Name="TextBox_RoutineTitle" FontSize="16" Width="1030" Height="35" Background="LightGray" Style="{StaticResource MaterialDesignTextBox}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Ciudad" Foreground="#f3f3f3" FontWeight="SemiBold" Width="515" FontFamily="Inter" Margin="35,10,0,0"  FontSize="20"/>
+                        <Label Content="País" Foreground="#f3f3f3" FontWeight="SemiBold" Width="515" FontFamily="Inter" Margin="15,10,0,0"  FontSize="20"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Name="TextBox_City" Foreground="#f3f3f3" FontWeight="SemiBold" FontSize="16" Margin="35,0,30,0" Width="500" Height="35" Background="LightGray" Style="{StaticResource MaterialDesignTextBox}"/>
+                        <TextBox Name="TextBox_Country" Foreground="#f3f3f3" FontWeight="SemiBold" FontSize="16" Width="500" Height="35" Background="LightGray" Style="{StaticResource MaterialDesignTextBox}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Estado" Width="515" Foreground="#f3f3f3" FontWeight="SemiBold" FontFamily="Inter" Margin="35,10,0,0"  FontSize="20"/>
+                        <Label Content="Localidad" Foreground="#f3f3f3" FontWeight="SemiBold" Width="515" FontFamily="Inter" Margin="15,10,0,0"  FontSize="20"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Name="TextBox_StateCountry" FontSize="16" Margin="35,0,30,0" Width="500" Height="35" Background="LightGray" Style="{StaticResource MaterialDesignTextBox}"/>
+                        <TextBox Name="TextBox_Town" FontSize="16" Width="500" Height="35" Background="LightGray" Style="{StaticResource MaterialDesignTextBox}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Categoria" Foreground="#f3f3f3" FontWeight="SemiBold" Width="515" FontFamily="Inter" Margin="35,10,0,0"  FontSize="20"/>
+                        <Label Content="Visibilidad" Foreground="#f3f3f3" FontWeight="SemiBold" Width="515" FontFamily="Inter" Margin="15,10,0,0"  FontSize="20"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Name="TextBox_LabelCategory" FontSize="16" Margin="35,0,30,0" Width="500" Height="35" Background="LightGray" Style="{StaticResource MaterialDesignTextBox}"/>
+                        <ComboBox Name="TextBox_Visibilty" FontSize="16" Width="500" Height="35" Background="LightGray"/>
+                    </StackPanel>
+                    <Label Content="Descripción" Foreground="#f3f3f3" FontWeight="SemiBold" FontFamily="Inter" Margin="30,10,0,0"  FontSize="20"/>
+                    <TextBox Name="TextBox_RoutineDescription" TextWrapping="Wrap" FontSize="16" Margin="0,0,0,20" Width="1030" Height="50" Background="LightGray" Style="{StaticResource MaterialDesignTextBox}"/>
+                    <ListBox x:Name="ListBox_TasksCards" Width="1030" Margin="0,0,0,0">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <materialDesign:Card Width="1030"  Padding="5" Height="300" Background="#4193CE" Opacity="0.9">
+                                        <StackPanel>
+                                            <Label Content="Nueva tarea" Foreground="#f3f3f3" FontWeight="SemiBold" FontFamily="Inter" Margin="30,0,0,0"  FontSize="22"/>
+                                            <Label Content="Titulo" Foreground="#f3f3f3" FontWeight="SemiBold" FontFamily="Inter" Margin="30,0,0,0"  FontSize="18"/>
+                                            <TextBox Name="TextBox_TaskTitle" FontSize="16" Margin="35,0,30,0" Width="1000" Height="35" Background="LightGray" Style="{StaticResource MaterialDesignTextBox}"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="Dirección" Width="500" Foreground="#f3f3f3" FontWeight="SemiBold" FontFamily="Inter" Margin="35,10,0,0"  FontSize="18"/>
+                                                <Label Content="Presupuesto" Foreground="#f3f3f3" FontWeight="SemiBold" Width="500" FontFamily="Inter" Margin="15,10,0,0"  FontSize="18"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBox Name="TextBox_Address" FontSize="16" Margin="35,0,30,0" Width="465" Height="35" Background="LightGray" Style="{StaticResource MaterialDesignTextBox}"/>
+                                                <TextBox Name="TextBox_Budget" FontSize="16" Width="450" Height="35" Background="LightGray" Style="{StaticResource MaterialDesignTextBox}"/>
+                                            </StackPanel>
+                                            <Label Content="Descripción" Foreground="#f3f3f3" FontWeight="SemiBold" FontFamily="Inter" Margin="30,10,0,0"  FontSize="18"/>
+                                            <TextBox Name="TextBox_TaskDescription" FontSize="16" Margin="35,0,30,0" Width="1000" Height="35" Background="LightGray" Style="{StaticResource MaterialDesignTextBox}"/>
+                                        </StackPanel>
+                                    </materialDesign:Card>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ListBox>
+                    <Button Click="Button_AddTask_Clic" Content="Añadir Tarea" Foreground="#f3f3f3" FontFamily="Inter" FontSize="22" Height="70" Width="1030" Background="#4193CE" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="0,30,0,30"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
         
     </Grid>
 </Page>

@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace Client.Pages
 {
     /// <summary>
-    /// Lógica de interacción para Page_Profile.xaml
+    /// Lógica de interacción para Page_EditProfile.xaml
     /// </summary>
-    public partial class Page_Profile : Page
+    public partial class Page_EditProfile : Page
     {
-        public Page_Profile()
+        public Page_EditProfile()
         {
             InitializeComponent();
-        }
-
-        private void Button_EditProfile_Clic(object sender, MouseButtonEventArgs e)
-        {
-            MainWindow.Instance.Frame_Page.Navigate(new Uri("/Pages/Page_EditProfile.xaml", UriKind.Relative));
         }
     }
 }
