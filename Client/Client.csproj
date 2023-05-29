@@ -159,7 +159,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Img\Icon_Add.png" />
-    <Resource Include="Img\Logo_Journeymate.png" />
     <Resource Include="Img\Icon_List.png" />
     <Resource Include="Img\Icon_Profile.png" />
     <Resource Include="Img\Icon_Search.png" />
@@ -183,6 +182,9 @@
       <Project>{b3c126e8-ff2b-43f5-b128-098f19a4c118}</Project>
       <Name>Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Journeymate_logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

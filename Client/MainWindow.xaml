@@ -29,7 +29,7 @@
                 TabStripPlacement="Left">
 
                 <materialDesign:NavigationRailAssist.FloatingContent>
-                    <Image Source="Img/Logo_Journeymate.png" Margin="0,10,0,100" Height="45" Width="45" Stretch="Fill"/>
+                    <Image Source="Img/Journeymate_logo.png" Margin="0,10,0,100" Height="45" Width="45" Stretch="Fill"/>
                 </materialDesign:NavigationRailAssist.FloatingContent>
 
                 <TabItem Width="100" x:Name="TabItem_Explorer">

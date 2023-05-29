@@ -52,27 +52,27 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image Source="/Img/Jorneymate_Isotype.png" Height="50" Margin="0,50,0,0"/>
                 <Label Content="Inicia sesión en tu cuenta" HorizontalContentAlignment="Center" FontFamily="Inter" Foreground="#F3F3F3" FontSize="20" Margin="0,30,0,0" />
-                <Label Content="Correo electronico" Foreground="#F3F3F3" Width="450" FontSize="20" FontFamily="Inter" Margin="0,50,0,0" />
+                <Label Content="Correo electronico" FontWeight="Light" Foreground="#F3F3F3" Width="450" FontSize="20" FontFamily="Inter" Margin="0,50,0,0" />
                 <Border CornerRadius="10" Background="#D9D9D9" Opacity=".7">
                     <TextBox x:Name="TextBox_Email" FontSize="14" Height="45" Width="450" Loaded="TextBox_Loaded" >
                         
                     </TextBox>
                 </Border>
-                <Label Content="Contraseña" Foreground="#F3F3F3" Width="450" FontSize="20" FontFamily="Inter" Margin="0,40,0,0" />
+                <Label Content="Contraseña" Foreground="#F3F3F3" FontWeight="Light" Width="450" FontSize="20" FontFamily="Inter" Margin="0,40,0,0" />
                 
                 <Border CornerRadius="10" Background="#D9D9D9" Opacity=".7">
                     <PasswordBox x:Name="PasswordBox_Password" Width="450" Height="45" Loaded="PasswordBox_Loaded"/>
                 </Border>
-                
-                <Label Content="¿Olvidaste tu contraseña?" FontFamily="Inter" Foreground="#F3F3F3" Width="450" FontSize="16" Margin="0,5,0,0" />
+
+                <Label Content="¿Olvidaste tu contraseña?" FontWeight="Light" FontFamily="Inter" Foreground="#F3F3F3" Width="450" FontSize="14" Margin="0,5,0,0" />
                 <Button Width="450" Height="45" FontFamily="Inter" Content="Iniciar Sesión" FontSize="16" IsDefault="True" Click="Button_Login_Clic" Margin="0,35,0,0" Foreground="#f3f3f3" Style="{StaticResource CustomMaterialDesignRaisedLightButton}">
                     <Button.Background>
                         <SolidColorBrush Color="#4193CE" Opacity="0.8"></SolidColorBrush>
                     </Button.Background>
                 </Button>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,50,0,0" >
-                    <Label Content="¿Aun no tienes una cuenta?" MouseLeftButtonDown="Button_SignUp_Clic" Cursor="Hand" HorizontalContentAlignment="Center" Foreground="#F3F3F3" FontSize="16" FontFamily="Inter"/>
-                    <Label Content="Registrate aqui" MouseLeftButtonDown="Button_SignUp_Clic" Cursor="Hand" HorizontalContentAlignment="Center" Foreground="#F3F3F3" FontWeight="Bold" FontSize="16" FontFamily="Inter" />
+                    <Label Content="¿Aun no tienes una cuenta?" Margin="0,0,-2,0" MouseLeftButtonDown="Button_SignUp_Clic" Cursor="Hand" HorizontalContentAlignment="Center" Foreground="#F3F3F3" FontSize="13" FontFamily="Inter" FontWeight="Light"/>
+                    <Label Content="Registrate aqui" MouseLeftButtonDown="Button_SignUp_Clic" Cursor="Hand" HorizontalContentAlignment="Center" Foreground="#F3F3F3"  FontSize="13" FontFamily="Inter" />
                 </StackPanel>
             </StackPanel>
         </Grid>
