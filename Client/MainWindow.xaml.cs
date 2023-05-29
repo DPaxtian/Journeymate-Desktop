@@ -21,11 +21,14 @@ namespace Client
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow Instance { get; private set; }
+
 
         public static User UserLogged { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            Instance = this;
         }
 
         private void Navigator_Page(object sender, SelectionChangedEventArgs e)

@@ -84,6 +84,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Page_EditProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Page_Explorer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,6 +116,9 @@
   <ItemGroup>
     <Compile Include="Pages\Page_AddRoutine.xaml.cs">
       <DependentUpon>Page_AddRoutine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page_EditProfile.xaml.cs">
+      <DependentUpon>Page_EditProfile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Page_Explorer.xaml.cs">
       <DependentUpon>Page_Explorer.xaml</DependentUpon>
@@ -172,6 +179,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Img\Login_Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\AddRoutine_Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\ProfilePicture_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_EditProfile.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Logic\Logic.csproj">
