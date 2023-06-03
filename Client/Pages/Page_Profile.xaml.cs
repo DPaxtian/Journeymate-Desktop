@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,30 @@ namespace Client.Pages
         public Page_Profile()
         {
             InitializeComponent();
+            SetUserInfo();
         }
 
         private void Button_EditProfile_Clic(object sender, MouseButtonEventArgs e)
         {
             MainWindow.Instance.Frame_Page.Navigate(new Uri("/Pages/Page_EditProfile.xaml", UriKind.Relative));
+        }
+
+        private void SetUserInfo()
+        {
+
+            if(MainWindow.UserLogged != null)
+            {
+                User loggedUser = MainWindow.UserLogged;
+                
+                TextBlock_Name.Text = loggedUser.name + " " + loggedUser.lastname;
+                Label_Username.Content = loggedUser.username;
+                Label_Email.Content = loggedUser.email;
+                Label_PhoneNumber.Content = loggedUser.phone_number;
+                Label_Age.Content = loggedUser.age;
+                Label_Location.Content = loggedUser.city + ", " + loggedUser.country;
+                Label_Description.Text = loggedUser.user_description;
+            }
+            
         }
     }
 }

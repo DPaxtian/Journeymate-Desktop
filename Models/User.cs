@@ -15,10 +15,10 @@ namespace Models
         public string username { get; set; }
         public string password { get; set; }
         public string email { get; set; }
-        public string phoneNumber { get; set; }
+        public string phone_number { get; set; }
         public string city { get; set; }
         public string country { get; set; }
-        public string userDescription { get; set; }
+        public string user_description { get; set; }
         public List<string> users_followed { get; set; }
         public List<string> routines_created { get; set; }
         public List<string> followed_routines { get; set; }

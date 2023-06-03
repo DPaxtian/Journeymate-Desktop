@@ -59,7 +59,7 @@
             <Label x:Name="Label_Location" Content="Playa del carmen, Quintana Roo" Margin="0,280,70,0" FontWeight="Light" Width="450" FontFamily="Inter" FontSize="22" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
             <Label Content="Descripción" Margin="40,0,0,130" FontFamily="Inter" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-            <TextBlock x:Name="Label_Description" Text="Ejemplo d" TextWrapping="Wrap" Width="1090" FontWeight="Light" Height="90" Margin="45,0,0,40" FontFamily="Inter" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBlock x:Name="Label_Description" Text="Ejemplo d" TextWrapping="Wrap" Width="800" FontWeight="Light" Height="90" Margin="45,0,0,40" FontFamily="Inter" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
 
         </Grid>
         
