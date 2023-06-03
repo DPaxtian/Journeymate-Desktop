@@ -35,7 +35,7 @@ namespace Client.Pages
             try
             {
                 routines = await RoutineLogic.GetRoutines();
-                List_Routines.ItemsSource = routines;
+                List_Routines.ItemsSource = routines.Where(r => r.Visibility.Equals("public"));
             }
             catch (Exception ex)
             {

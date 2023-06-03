@@ -35,9 +35,10 @@ namespace Logic
                 if (messageResponse.IsSuccessStatusCode)
                 {
                     string jsonResponse = await messageResponse.Content.ReadAsStringAsync();
-                    User responseDeserialize = JsonConvert.DeserializeObject<User>(jsonResponse);
+                    ApiResponseUser responseDeserialize = JsonConvert.DeserializeObject<ApiResponseUser>(jsonResponse);
 
-                    userValid = responseDeserialize;
+
+                    userValid = responseDeserialize.Result;
                 }
             }
             catch (Exception ex)

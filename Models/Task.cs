@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Task
+    public partial class Task
     {
 
         [JsonProperty("_id")]
@@ -37,5 +37,12 @@ namespace Models
 
         [JsonProperty("comments")]
         public List<Comment> Task_Comments { get; set; }
+    }
+
+
+    public partial class TaskItem
+    {
+        [JsonProperty("task")]
+        public string TaskId { get; set; }
     }
 }

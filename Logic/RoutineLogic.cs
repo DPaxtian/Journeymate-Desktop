@@ -26,19 +26,10 @@ namespace Logic
                 HttpResponseMessage messageResponse = await server.GetAsync(url);
                 string jsonResponse = await messageResponse.Content.ReadAsStringAsync();
 
-                ApiResponseRoutine<Object> response = JsonConvert.DeserializeObject<ApiResponseRoutine<Object>>(jsonResponse);
-
-                Console.WriteLine(response);
-
-                if (response.Msg is string)
+                if (messageResponse.IsSuccessStatusCode)
                 {
-                    string singleString = response.Msg as string;
-                }
-                else if (response.Msg is List<Routine>)
-                {
-                    List<Routine> routineList = JsonConvert.DeserializeObject<List<Routine>>(response.Msg.ToString());
-                    routines = routineList;
-                    Console.WriteLine(routineList.Count);
+                    ApiResponseRoutine routinesDescerialized = JsonConvert.DeserializeObject<ApiResponseRoutine>(jsonResponse);
+                    routines = routinesDescerialized.Routines;
                 }
             }
             catch (Exception ex)
