@@ -120,13 +120,13 @@ namespace Client.Pages
             {
                 User loggedUser = MainWindow.UserLogged;
 
-                TextBox_Name.Text = loggedUser.name;
-                TextBox_LastName.Text = loggedUser.lastname;
-                TextBox_Email.Text = loggedUser.email;
-                TextBox_PhoneNumber.Text = loggedUser.phone_number;
-                TextBox_Country.Text = loggedUser.country;
-                TextBox_City.Text = loggedUser.city;
-                TextBox_Description.Text = loggedUser.user_description;
+                TextBox_Name.Text = loggedUser.Name;
+                TextBox_LastName.Text = loggedUser.Lastname;
+                TextBox_Email.Text = loggedUser.Email;
+                TextBox_PhoneNumber.Text = loggedUser.PhoneNumber;
+                TextBox_Country.Text = loggedUser.Country;
+                TextBox_City.Text = loggedUser.City;
+                TextBox_Description.Text = loggedUser.UserDescription;
             }
         }
 

@@ -7,8 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Security.AccessControl;
-using System.Text.Json;
-using Newtonsoft;
+using Newtonsoft.Json;
 
 namespace Logic
 {
@@ -29,28 +28,24 @@ namespace Logic
                     email = emailToLogin,
                     password = passwordHashed,
                 };
-                string dataToSend = JsonSerializer.Serialize(data);
+                string dataToSend = JsonConvert.SerializeObject(data);
                 HttpContent contentToSend = new StringContent(dataToSend, Encoding.UTF8, "application/json");
                 HttpResponseMessage messageResponse = await server.PostAsync(url, contentToSend);
 
-
                 if (messageResponse.IsSuccessStatusCode)
                 {
-                    string jsonResponde = await messageResponse.Content.ReadAsStringAsync();
-                    ApiResponseUser responseDescerialize = JsonSerializer.Deserialize<ApiResponseUser>(jsonResponde);
-                    User userLogin = responseDescerialize.msg;
+                    string jsonResponse = await messageResponse.Content.ReadAsStringAsync();
+                    User responseDeserialize = JsonConvert.DeserializeObject<User>(jsonResponse);
 
-                    userValid = userLogin;
+                    userValid = responseDeserialize;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("There is an error at Autentication class:" +
-                    ex);
+                Console.WriteLine("There is an error at Authentication class: " + ex);
             }
 
             return userValid;
         }
-
     }
 }

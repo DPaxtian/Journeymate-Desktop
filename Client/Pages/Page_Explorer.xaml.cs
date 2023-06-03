@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Logic;
 using Models;
 
 namespace Client.Pages
@@ -21,99 +22,26 @@ namespace Client.Pages
     /// </summary>
     public partial class Page_Explorer : Page
     {
-        public List<Routine> routines = new List<Routine>
-        {
-           new Routine
-           {
-               Name = "Cafeterias drag",
-               Country  = "Xalapa",
-               Routine_Description = "Antros gay(drag) para agarrar un macanon",
-               Visibility = "private",
-               label_category = "Party",
-               State_Country = "Veracruz",
-               Town = "Xalapa",
-               Creator = "Elva J. Fernández",
-               Budget = "$300"
-            },
-           new Routine
-           {
-               Name = "Cafeterias drag",
-               Country  = "Xalapa",
-               Routine_Description = "Antros gay(drag) para agarrar un macanon",
-               Visibility = "private",
-               label_category = "Party",
-               State_Country = "Veracruz",
-               Town = "Xalapa",
-               Creator = "Elva J. Fernández",
-               Budget = "$300"
-            },
-           new Routine
-           {
-               Name = "Cafeterias drag",
-               Country  = "Xalapa",
-               Routine_Description = "Antros gay(drag) para agarrar un macanon",
-               Visibility = "private",
-               label_category = "Party",
-               State_Country = "Veracruz",
-               Town = "Xalapa",
-               Creator = "Elva J. Fernández",
-               Budget = "$300"
-            },
-           new Routine
-           {
-               Name = "Cafeterias drag",
-               Country  = "Xalapa",
-               Routine_Description = "Antros gay(drag) para agarrar un macanon",
-               Visibility = "private",
-               label_category = "Party",
-               State_Country = "Veracruz",
-               Town = "Xalapa",
-               Creator = "Elva J. Fernández",
-               Budget = "$300"
-            },
-           new Routine
-           {
-               Name = "Cafeterias drag",
-               Country  = "Xalapa",
-               Routine_Description = "Antros gay(drag) para agarrar un macanon",
-               Visibility = "private",
-               label_category = "Party",
-               State_Country = "Veracruz",
-               Town = "Xalapa",
-               Creator = "Elva J. Fernández",
-               Budget = "$300"
-            },
-           new Routine
-           {
-               Name = "Cafeterias drag",
-               Country  = "Xalapa",
-               Routine_Description = "Antros gay(drag) para agarrar un macanon",
-               Visibility = "private",
-               label_category = "Party",
-               State_Country = "Veracruz",
-               Town = "Xalapa",
-               Creator = "Elva J. Fernández",
-               Budget = "$300"
-            },
-           new Routine
-           {
-               Name = "Cafeterias drag",
-               Country  = "Xalapa",
-               Routine_Description = "Antros gay(drag) para agarrar un macanon",
-               Visibility = "private",
-               label_category = "Party",
-               State_Country = "Veracruz",
-               Town = "Xalapa",
-               Creator = "Elva J. Fernández",
-               Budget = "$300"
-            }
-        };
+        public List<Routine> routines = new List<Routine>();
+
         public Page_Explorer()
         {
             InitializeComponent();
-            List_Routines.ItemsSource = routines;
+            FillRountinesList();
         }
 
+        private async void FillRountinesList()
+        {
+            try
+            {
+                routines = await RoutineLogic.GetRoutines();
+                List_Routines.ItemsSource = routines;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
        
 
 

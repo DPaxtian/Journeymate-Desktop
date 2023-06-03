@@ -24,6 +24,7 @@ namespace Client.Pages
         public Page_Profile()
         {
             InitializeComponent();
+            Console.WriteLine(MainWindow.UserLogged.Name);
             SetUserInfo();
         }
 
@@ -39,13 +40,13 @@ namespace Client.Pages
             {
                 User loggedUser = MainWindow.UserLogged;
                 
-                TextBlock_Name.Text = loggedUser.name + " " + loggedUser.lastname;
-                Label_Username.Content = loggedUser.username;
-                Label_Email.Content = loggedUser.email;
-                Label_PhoneNumber.Content = loggedUser.phone_number;
-                Label_Age.Content = loggedUser.age;
-                Label_Location.Content = loggedUser.city + ", " + loggedUser.country;
-                Label_Description.Text = loggedUser.user_description;
+                TextBlock_Name.Text = loggedUser.Name + " " + loggedUser.Lastname;
+                Label_Username.Content = loggedUser.Username;
+                Label_Email.Content = loggedUser.Email;
+                Label_PhoneNumber.Content = loggedUser.PhoneNumber;
+                Label_Age.Content = loggedUser.Age;
+                Label_Location.Content = loggedUser.City + ", " + loggedUser.Country;
+                Label_Description.Text = loggedUser.UserDescription;
             }
             
         }
