@@ -11,6 +11,7 @@ namespace Models
        Ok = 200,
        ProccessError = 500,
        EntryError = 404,
-       Unautorized = 401
+       Unautorized = 401,
+       Conflict = 409
     }
 }

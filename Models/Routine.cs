@@ -38,8 +38,8 @@ namespace Models
         [JsonProperty("town")]
         public string Town { get; set; }
 
-        [JsonProperty("creator")]
-        public string Creator { get; set; }
+        [JsonProperty("routine_creator")]
+        public string Routine_Creator { get; set; }
 
         [JsonProperty("budget")]
         public string Budget { get; set; }
@@ -48,10 +48,13 @@ namespace Models
         public List<Valoration> Valorations { get; set; }
 
         [JsonProperty("tasks")]
-        public List<string> Tasks { get; set; }
+        public List<TaskItem> Tasks { get; set; }
 
         [JsonProperty("routine_comments")]
         public List<Comment> Routine_Comments { get; set; }
+
+        [JsonProperty("__v")]
+        public int Version { get; set; }
 
     }
 }

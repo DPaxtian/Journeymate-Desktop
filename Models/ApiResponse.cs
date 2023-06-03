@@ -9,8 +9,26 @@ namespace Models
 {
     public partial class ApiResponseUser
     {
-        public int code { get; set; }
-        public User msg { get; set; }
+        [JsonProperty("code")]
+        public int Code { get; set; }
+
+        [JsonProperty("msg")]
+        public string Msg { get; set; }
+
+        [JsonProperty("result")]
+        public User Result { get; set; }
+    }
+
+    public partial class ApiResponseRoutine
+    {
+        [JsonProperty("code")]
+        public int Code { get; set; }
+
+        [JsonProperty("msg")]
+        public string Msg { get; set; }
+
+        [JsonProperty("response")]
+        public List<Routine> Routines { get; set; }
     }
 
     public partial class ApiResponseRoutine<T>
