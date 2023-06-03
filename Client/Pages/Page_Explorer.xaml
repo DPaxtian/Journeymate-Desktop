@@ -163,7 +163,7 @@
 
                                     <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Bottom" Margin="0,0,0,15">
                                         <TextBlock Text="De: " FontSize="14"></TextBlock>
-                                        <TextBlock Text="{Binding Creator}" FontWeight="DemiBold" FontSize="14" ></TextBlock>
+                                        <TextBlock Text="{Binding Routine_Creator}" FontWeight="DemiBold" FontSize="14" ></TextBlock>
                                     </StackPanel>
 
                                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">

@@ -38,8 +38,8 @@ namespace Models
         [JsonProperty("town")]
         public string Town { get; set; }
 
-        [JsonProperty("creator")]
-        public string Creator { get; set; }
+        [JsonProperty("routine_creator")]
+        public string Routine_Creator { get; set; }
 
         [JsonProperty("budget")]
         public string Budget { get; set; }
