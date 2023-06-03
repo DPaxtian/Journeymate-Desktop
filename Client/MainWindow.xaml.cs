@@ -56,7 +56,7 @@ namespace Client
                 }
                 else
                 {
-                    Frame_Page.Navigate(new Uri("/Pages/Page_Login.xaml", UriKind.Relative));
+                    Frame_Page.Navigate(new Uri("/Pages/Page_EditProfile.xaml", UriKind.Relative));
                 }
             }
         }
