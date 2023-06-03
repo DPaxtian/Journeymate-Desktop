@@ -29,19 +29,19 @@ namespace Client.Pages
 
         private async void Button_Login_Clic(object sender, RoutedEventArgs e)
         {
-            if (ValidateFormatEntryParams(TextBox_Email.Text) == (int)StatusCode.Ok)
+            if (ValidateFormatEntryParams(TextBox_Email.Text) == (int)StatusCode.Ok || !string.IsNullOrEmpty(TextBox_Email.Text) || !string.IsNullOrEmpty(PasswordBox_Password.Password))
             {
                 try
                 {
-                   User userToLogin = await Autentication.Login(TextBox_Email.Text, PasswordBox_Password.Password);
+                    User userToLogin = await Autentication.Login(TextBox_Email.Text, PasswordBox_Password.Password);
                     if (userToLogin != null)
                     {
                         MainWindow.UserLogged = userToLogin;
-                        MessageBox.Show("Login exitoso");
+                        MainWindow.Instance.Frame_Page.Navigate(new Uri("/Pages/Page_Profile.xaml", UriKind.Relative));
                     }
                     else
                     {
-                        MessageBox.Show("Login fallido");
+                        Label_Login_Error.Visibility = Visibility.Visible;
                     }
                 }
                 catch (Exception ex)
@@ -49,12 +49,16 @@ namespace Client.Pages
                     Console.WriteLine("There is an error to execute login method: "+ex);
                 }
             }
+            else
+            {
+                Label_Login_Error.Visibility = Visibility.Visible;
+            }
         }
 
 
         private void Button_SignUp_Clic(object sender, MouseButtonEventArgs e)
         {
-            
+            MainWindow.Instance.Frame_Page.Navigate(new Uri("/Pages/Page_SignUp.xaml", UriKind.Relative));
         }
 
 
