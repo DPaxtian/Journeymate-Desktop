@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 //faltan atributos aun...
 namespace Models
 {
-    public class Routine
+    public partial class Routine
     {
         [JsonProperty("_id")]
         public string Id { get; set; }
@@ -56,6 +56,13 @@ namespace Models
         [JsonProperty("__v")]
         public int Version { get; set; }
 
+    }
+
+
+    public partial class RoutineItem
+    {
+        [JsonProperty("routine")]
+        public string RoutineString { get; set; }
     }
 }
 

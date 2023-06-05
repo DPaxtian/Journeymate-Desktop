@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
 
         <materialDesign:Card Width="100" Grid.Column="0">
-            <TabControl Width="100" SelectionChanged="Navigator_Page"
+            <TabControl x:Name="TabPages" Width="100" SelectionChanged="Navigator_Page"
                 materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
                 SnapsToDevicePixels="True"
                 Style="{StaticResource MaterialDesignNavigationRailTabControl}"

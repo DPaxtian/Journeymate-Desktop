@@ -39,5 +39,41 @@ namespace Logic
 
             return routines;
         }
+
+
+        public static async Task<int> SaveRoutine(string username, Routine routine)
+        {
+            int resultCode = (int)StatusCode.ProccessError;
+
+            try
+            {
+                var data = new
+                {
+                    routine_creator = username,
+                    name = routine.Name,
+                    city = routine.City,
+                    country = routine.Country,
+                    routine_description = routine.Routine_Description,
+                    visibility = routine.Visibility,
+                    label_category = routine.Label_Category,
+                    state_country = routine.State_Country,
+                    town = routine.Town
+                };
+                string dataToSend = JsonConvert.SerializeObject(data);
+
+
+                HttpClient server = new HttpClient();
+                string url = "http://localhost:9000/api/" + apiVersion + "/routines/";
+                HttpContent contentToSend = new StringContent(dataToSend, Encoding.UTF8, "application/json");
+                HttpResponseMessage messageResponse = await server.PostAsync(url, contentToSend);
+
+                resultCode = (int)messageResponse.StatusCode;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There is an error saving the routine: " + ex);
+            }
+            return resultCode;
+        }
     }
 }

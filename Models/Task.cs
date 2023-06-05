@@ -10,7 +10,6 @@ namespace Models
 {
     public partial class Task
     {
-
         [JsonProperty("_id")]
         public string _Id {  get; set; }
 
@@ -18,7 +17,7 @@ namespace Models
         public string Name { get; set; }
 
         [JsonProperty("task_description")]
-        public string Task_Decription { get; set; }
+        public string Task_Description { get; set; }
 
         [JsonProperty("address")]
         public string Address { get; set; }
@@ -37,6 +36,7 @@ namespace Models
 
         [JsonProperty("comments")]
         public List<Comment> Task_Comments { get; set; }
+
     }
 
 

@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Logic;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,11 +29,32 @@ namespace Client.Pages
             SetUserData();
         }
 
-        private void Button_SaveProfile_Clic(object sender, RoutedEventArgs e)
+        private async void Button_SaveProfile_Clic(object sender, RoutedEventArgs e)
         {
             if (ValidateFields())
             {
+                User user = new User{
+                    Username = MainWindow.UserLogged.Username,
+                    Name = TextBox_Name.Text,
+                    Lastname = TextBox_LastName.Text,
+                    Email = TextBox_Email.Text,
+                    PhoneNumber = TextBox_PhoneNumber.Text,
+                    City = TextBox_City.Text,
+                    Country= TextBox_Country.Text,
+                    UserDescription = TextBox_Description.Text,
+                    Age = MainWindow.UserLogged.Age
+                };
+                int statusCode = await UserLogic.EditProfile(user);
 
+                if(statusCode == 200)
+                {
+                    UpdateUserLogged(MainWindow.UserLogged.Username);
+                    EditProfileSuccessfull();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo actualizar el perfil", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
@@ -50,41 +72,42 @@ namespace Client.Pages
         private bool ValidateFields()
         {
             bool isValid = true;
-            string emailFormat = "^\\S+@\\S+\\.\\S+$";
-            string lettersFormat = "^[A-Za-z]+$";
+            Regex emailFormat = new Regex("^\\S+@\\S+\\.\\S+$");
+            Regex lettersFormat = new Regex(@"^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$");
+            
 
             HideErrorLabels();
-            if(!Regex.IsMatch(TextBox_Name.Text, lettersFormat) || TextBox_Name.Text.Equals(""))
+            if(!lettersFormat.IsMatch(TextBox_Name.Text) || TextBox_Name.Text.Equals(""))
             {
                 LabelFieldError.Visibility = Visibility.Visible;
                 LabelNameError.Visibility = Visibility.Visible;
                 isValid = false;
             }
-            if (!Regex.IsMatch(TextBox_LastName.Text, lettersFormat) || TextBox_LastName.Text.Equals(""))
+            if (!lettersFormat.IsMatch(TextBox_LastName.Text) || TextBox_LastName.Text.Equals(""))
             {
                 LabelFieldError.Visibility = Visibility.Visible;
                 LabelLastNameError.Visibility = Visibility.Visible;
                 isValid = false;
             }
-            if (!Regex.IsMatch(TextBox_Email.Text, emailFormat) || TextBox_Email.Text.Equals(""))
+            if (!emailFormat.IsMatch(TextBox_Email.Text) || TextBox_Email.Text.Equals(""))
             {
                 LabelFieldError.Visibility = Visibility.Visible;
                 LabelEmailError.Visibility = Visibility.Visible;
                 isValid = false;
             }
-            if (TextBox_PhoneNumber.Text.Equals(""))
+            if (TextBox_PhoneNumber.Text.Equals("") || TextBox_PhoneNumber.Text.Length < 10)
             {
                 LabelFieldError.Visibility = Visibility.Visible;
                 LabelPhoneNumberError.Visibility = Visibility.Visible;
                 isValid = false;
             }
-            if (!Regex.IsMatch(TextBox_Country.Text, lettersFormat) || TextBox_Country.Text.Equals(""))
+            if (!lettersFormat.IsMatch(TextBox_Country.Text) || TextBox_Country.Text.Equals(""))
             {
                 LabelFieldError.Visibility = Visibility.Visible;
                 LabelCountryError.Visibility = Visibility.Visible;
                 isValid = false;
             }
-            if (!Regex.IsMatch(TextBox_City.Text, lettersFormat) || TextBox_City.Text.Equals(""))
+            if (!lettersFormat.IsMatch(TextBox_City.Text) || TextBox_City.Text.Equals(""))
             {
                 LabelFieldError.Visibility = Visibility.Visible;
                 LabelCityError.Visibility = Visibility.Visible;
@@ -114,6 +137,7 @@ namespace Client.Pages
             LabelDescriptionError.Visibility = Visibility.Hidden;
         }
 
+
         private void SetUserData()
         {
             if(MainWindow.UserLogged != null)
@@ -130,10 +154,28 @@ namespace Client.Pages
             }
         }
 
+
         private void ValidatePhoneNumber(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+
+        private void EditProfileSuccessfull()
+        {
+            MessageBox.Show("Usuario actualizado con exito", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            MainWindow.Instance.Frame_Page.Navigate(new Uri("/Pages/Page_Profile.xaml", UriKind.Relative));
+        }
+
+        private async void UpdateUserLogged(string username)
+        {
+            User userUpdated = await UserLogic.RecoverUserByUsername(username);
+
+            if (userUpdated != null)
+            {
+                MainWindow.UserLogged = userUpdated;
+            }
         }
     }
 }

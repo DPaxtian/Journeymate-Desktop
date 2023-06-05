@@ -38,15 +38,36 @@ namespace Client
             }
             else if (TabItem_MyLists.IsSelected)
             {
-                Frame_Page.Navigate(new Uri("/Pages/Page_MyLists.xaml", UriKind.Relative));
+                if (UserLogged != null)
+                {
+                    Frame_Page.Navigate(new Uri("/Pages/Page_MyLists.xaml", UriKind.Relative));
+                }
+                else
+                {
+                    TabPages.SelectedItem = TabItem_Profile;
+                }
             }
             else if (TabItem_AddRoutine.IsSelected)
             {
-                Frame_Page.Navigate(new Uri("/Pages/Page_AddRoutine.xaml", UriKind.Relative));
+                if(UserLogged != null)
+                {
+                    Frame_Page.Navigate(new Uri("/Pages/Page_AddRoutine.xaml", UriKind.Relative));
+                }
+                else
+                {
+                    TabPages.SelectedItem = TabItem_Profile;
+                }
             }
             else if(TabItem_Favorites.IsSelected)
             {
-                Frame_Page.Navigate(new Uri("/Pages/Page_Favorites.xaml", UriKind.Relative));
+                if (UserLogged != null)
+                {
+                    Frame_Page.Navigate(new Uri("/Pages/Page_Favorites.xaml", UriKind.Relative));
+                }
+                else
+                {
+                    TabPages.SelectedItem = TabItem_Profile;
+                }
             }
             else if(TabItem_Profile.IsSelected)
             {
@@ -59,6 +80,12 @@ namespace Client
                     Frame_Page.Navigate(new Uri("/Pages/Page_Login.xaml", UriKind.Relative));
                 }
             }
+        }
+
+        
+        public void NavigateToExplorer()
+        {
+            TabPages.SelectedItem = TabItem_Explorer;
         }
 
     }

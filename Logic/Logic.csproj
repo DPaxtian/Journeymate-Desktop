@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Autentication.cs" />
     <Compile Include="Encription.cs" />
+    <Compile Include="HttpClientExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoutineLogic.cs" />
     <Compile Include="UserLogic.cs" />

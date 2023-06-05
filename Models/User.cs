@@ -30,7 +30,7 @@ namespace Models
         [JsonProperty("email")]
         public string Email { get; set; }
 
-        [JsonProperty("phoneNumber")]
+        [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
 
         [JsonProperty("city")]
@@ -39,14 +39,14 @@ namespace Models
         [JsonProperty("country")]
         public string Country { get; set; }
 
-        [JsonProperty("userDescription")]
+        [JsonProperty("user_description")]
         public string UserDescription { get; set; }
 
         [JsonProperty("users_followed")]
         public List<string> Users_followed { get; set; }
 
         [JsonProperty("routines_created")]
-        public List<string> Routines_created { get; set; }
+        public List<RoutineItem> Routines_created { get; set; }
 
         [JsonProperty("followed_routines")]
         public List<string> Followed_routines { get; set; }

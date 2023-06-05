@@ -197,16 +197,7 @@ namespace Client.Pages
                         Message_SignUpError.Visibility = Visibility.Visible;
                     }
                 }
-                else
-                {
-                    Console.WriteLine("Hay un error");
-                }
             }
-            else
-            {
-                Console.WriteLine("Hay un error");
-            }
-
         }
 
         

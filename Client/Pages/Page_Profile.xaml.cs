@@ -24,7 +24,6 @@ namespace Client.Pages
         public Page_Profile()
         {
             InitializeComponent();
-            Console.WriteLine(MainWindow.UserLogged.Name);
             SetUserInfo();
         }
 

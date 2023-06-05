@@ -9,9 +9,6 @@
       Title="Page_EditProfile">
 
     <Page.Resources>
-        
-        
-        
         <Style x:Key="CustomMaterialDesignRaisedLightButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
             <Setter Property="Template">
                 <Setter.Value>
