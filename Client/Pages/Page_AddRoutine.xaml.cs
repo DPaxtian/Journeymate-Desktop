@@ -92,10 +92,6 @@ namespace Client.Pages
                     MessageBox.Show("Rutina guardada con exito!", "Exito" ,MessageBoxButton.OK, MessageBoxImage.Information);
                     NavigateToMyListsPages();
                 }
-                else
-                {
-                    MessageBox.Show("mamaste puto", "D:", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
             }
         }
 

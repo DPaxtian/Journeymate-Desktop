@@ -44,6 +44,9 @@ namespace Models
         [JsonProperty("budget")]
         public string Budget { get; set; }
 
+        [JsonProperty("followers")]
+        public int Followers { get; set; }
+
         [JsonProperty("valoration")]
         public List<Valoration> Valorations { get; set; }
 

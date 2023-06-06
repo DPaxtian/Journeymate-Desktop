@@ -31,6 +31,19 @@ namespace Models
         public List<Routine> Routines { get; set; }
     }
 
+
+    public partial class ApiResponseTask
+    {
+        [JsonProperty("code")]
+        public int Code { get; set; }
+
+        [JsonProperty("msg")]
+        public string Msg { get; set; }
+
+        [JsonProperty("response")]
+        public List<Models.Task> Response { get; set; }
+    }
+
     public partial class ApiResponseRoutine<T>
     {
         [JsonProperty("code")]

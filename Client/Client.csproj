@@ -108,6 +108,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Page_RoutineDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Page_SignUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -134,6 +138,9 @@
     </Compile>
     <Compile Include="Pages\Page_Profile.xaml.cs">
       <DependentUpon>Page_Profile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page_RoutineDetails.xaml.cs">
+      <DependentUpon>Page_RoutineDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Page_SignUp.xaml.cs">
       <DependentUpon>Page_SignUp.xaml</DependentUpon>
