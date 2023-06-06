@@ -56,6 +56,7 @@ namespace Client.Pages
 
         private void Button_Delete_Clic(object sender, MouseButtonEventArgs e)
         {
+            List_MyRoutines.IsEnabled = false;
             Image button = (Image)sender;
             DependencyObject container = VisualTreeHelper.GetParent(button);
 

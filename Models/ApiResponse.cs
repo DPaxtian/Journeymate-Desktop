@@ -31,7 +31,6 @@ namespace Models
         public List<Routine> Routines { get; set; }
     }
 
-
     public partial class ApiResponseTask
     {
         [JsonProperty("code")]

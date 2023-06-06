@@ -49,6 +49,6 @@ namespace Models
         public List<RoutineItem> Routines_created { get; set; }
 
         [JsonProperty("followed_routines")]
-        public List<string> Followed_routines { get; set; }
+        public List<Routine> Followed_routines { get; set; }
     }
 }
