@@ -40,7 +40,7 @@ namespace Client.Pages
                 List_FavoritesRoutines.ItemsSource = favoritesRoutines;
                 if (favoritesRoutines != null)
                 {
-                    List_FavoritesRoutines.ItemsSource = favoritesRoutines  ;
+                    List_FavoritesRoutines.ItemsSource = favoritesRoutines;
                     if (favoritesRoutines.Count == 0)
                     {
                         LabelRoutinesEmpty.Visibility = Visibility.Visible;

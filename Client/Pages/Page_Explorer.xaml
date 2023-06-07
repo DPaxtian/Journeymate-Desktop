@@ -167,20 +167,19 @@
                                     </StackPanel>
 
                                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <StackPanel Orientation="Horizontal" Margin="0,0,25,0" VerticalAlignment="Center">
-                                            <Image Source="/Img/Icon_LikesHeart.png" Width="25" Margin="0,0,0,0"/>
-                                            <TextBlock Text="12" Margin="5,4,0,0"></TextBlock>
+                                        
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center" Margin="170,0,0,10">
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,30,0" VerticalAlignment="Center">
+                                            <Image Source="/Img/Icon_LikesHeart.png" Width="25" Margin="10,10,0,0"/>
+                                            <TextBlock Text="12" Margin="5,11,0,0"></TextBlock>
                                         </StackPanel>
 
                                         <StackPanel Orientation="Horizontal">
-                                            <Image Source="/Img/Icon_Comments.png" Width="20" Margin="0,0,0,1"/>
-                                            <TextBlock Text="12" Margin="6,19,0,0" ></TextBlock>
+                                            <Image Source="/Img/Icon_Comments.png" Width="20" Margin="0,7,0,0"/>
+                                            <TextBlock Text="12" Margin="6,14,0,0" ></TextBlock>
                                         </StackPanel>
-                                    </StackPanel>
-
-                                    <StackPanel Grid.Column="2" HorizontalAlignment="Center" Margin="40,0,0,10"> 
-                                        <TextBlock Text="Gasto aproximado" FontSize="18" FontWeight="Light"></TextBlock>
-                                        <TextBlock Text="{Binding Budget}" FontWeight="DemiBold" FontSize="18" HorizontalAlignment="Center"></TextBlock>
                                     </StackPanel>
                                 </Grid>
                             </Grid>
