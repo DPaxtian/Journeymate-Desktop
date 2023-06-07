@@ -173,7 +173,7 @@
                                     <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center" Margin="170,0,0,10">
                                         <StackPanel Orientation="Horizontal" Margin="0,0,30,0" VerticalAlignment="Center">
                                             <Image Source="/Img/Icon_LikesHeart.png" Width="25" Margin="10,10,0,0"/>
-                                            <TextBlock Text="12" Margin="5,11,0,0"></TextBlock>
+                                            <TextBlock Text="{Binding Followers}" Margin="5,11,0,0"></TextBlock>
                                         </StackPanel>
 
                                         <StackPanel Orientation="Horizontal">

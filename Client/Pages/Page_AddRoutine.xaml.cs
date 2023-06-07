@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -33,6 +34,7 @@ namespace Client.Pages
         {
             InitializeComponent();
             FillVisibilityComboBox();
+            FillCategoryComboBox();
         }
 
 
@@ -68,7 +70,7 @@ namespace Client.Pages
                     Country = TextBox_Country.Text,
                     State_Country = TextBox_StateCountry.Text,
                     Town = TextBox_Town.Text,
-                    Label_Category = TextBox_LabelCategory.Text,
+                    Label_Category = ComboBox_LabelCategory.SelectedItem.ToString(),
                     Visibility = SetVisibilityField(),
                     Routine_Description = TextBox_RoutineDescription.Text
                 };
@@ -252,6 +254,32 @@ namespace Client.Pages
             ComboBox_Visibilty.ItemsSource = states;
         }
 
+
+        private void FillCategoryComboBox()
+        {
+            List<string> categories = new List<string>
+            {
+                "Turismo",
+                "Gastronomía",
+                "Compras",
+                "Entretenimiento",
+                "Actividades al aire libre",
+                "Vida nocturna",
+                "Arte y cultura",
+                "Naturaleza y espacios verdes",
+                "Actividades educativas",
+                "Deportes y recreación",
+                "Relajación y bienestar",
+                "Eventos culturales",
+                "Aventura",
+                "Actividades acuaticas",
+                "Educación y aprendizaje"
+            };
+
+            ComboBox_LabelCategory.ItemsSource = categories;
+        }
+
+
         private string SetVisibilityField()
         {
             string visibility = "";
@@ -304,7 +332,7 @@ namespace Client.Pages
                 LabelTownError.Visibility = Visibility.Visible;
                 isValid = false;
             }
-            if (TextBox_LabelCategory.Text.Equals(""))
+            if (ComboBox_LabelCategory.SelectedItem.ToString().Equals(""))
             {
                 LabelFieldError.Visibility = Visibility.Visible;
                 LabelCategoryError.Visibility = Visibility.Visible;

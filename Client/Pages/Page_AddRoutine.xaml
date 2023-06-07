@@ -108,7 +108,7 @@
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="25" Opacity="0.25" />
                             </Border.Effect>
-                            <TextBox Name="TextBox_LabelCategory" MaxLength="20" FontSize="16" Width="535" Height="35" Style="{StaticResource MaterialDesignTextBox}"/>
+                            <ComboBox Name="ComboBox_LabelCategory" FontSize="16" Width="535" Height="35"/>
                         </Border>
                         
                         <Border Background="#f3f3f3" CornerRadius="7">

@@ -30,7 +30,7 @@ namespace Client.Pages
             InitializeComponent();
             FillVisibilityComboBox();
             SetRoutineInfo();
-            Console.WriteLine(routine.Id);
+            FillCategoryComboBox();
         }
 
         private async void Button_UpdateRoutine_Clic(object sender, RoutedEventArgs e)
@@ -46,7 +46,7 @@ namespace Client.Pages
                     Country = TextBox_Country.Text,
                     State_Country = TextBox_StateCountry.Text,
                     Town = TextBox_Town.Text,
-                    Label_Category = TextBox_LabelCategory.Text,
+                    Label_Category = ComboBox_LabelCategory.SelectedItem.ToString(),
                     Visibility = SetVisibilityField(),
                     Routine_Description = TextBox_RoutineDescription.Text,
                     Followers = routine.Followers,
@@ -88,7 +88,7 @@ namespace Client.Pages
                 TextBox_Country.Text = routine.Country;
                 TextBox_StateCountry.Text = routine.State_Country;
                 TextBox_Town.Text = routine.Town;
-                TextBox_LabelCategory.Text = routine.Label_Category;
+                ComboBox_LabelCategory.SelectedItem = routine.Label_Category;
                 SetVisibilityValue();
                 TextBox_RoutineDescription.Text = routine.Routine_Description;
                 
@@ -138,6 +138,31 @@ namespace Client.Pages
         }
 
 
+        private void FillCategoryComboBox()
+        {
+            List<string> categories = new List<string>
+            {
+                "Turismo",
+                "Gastronomía",
+                "Compras",
+                "Entretenimiento",
+                "Actividades al aire libre",
+                "Vida nocturna",
+                "Arte y cultura",
+                "Naturaleza y espacios verdes",
+                "Actividades educativas",
+                "Deportes y recreación",
+                "Relajación y bienestar",
+                "Eventos culturales",
+                "Aventura",
+                "Actividades acuaticas",
+                "Educación y aprendizaje"
+            };
+
+            ComboBox_LabelCategory.ItemsSource = categories;
+        }
+
+
         private bool ValidateFields()
         {
             bool isValid = true;
@@ -173,7 +198,7 @@ namespace Client.Pages
                 LabelTownError.Visibility = Visibility.Visible;
                 isValid = false;
             }
-            if (TextBox_LabelCategory.Text.Equals(""))
+            if (ComboBox_LabelCategory.SelectedItem.ToString().Equals(""))
             {
                 LabelFieldError.Visibility = Visibility.Visible;
                 LabelCategoryError.Visibility = Visibility.Visible;
