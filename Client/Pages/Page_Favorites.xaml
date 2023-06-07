@@ -20,6 +20,7 @@
             </Grid>
 
             <Grid Grid.Row="1" Margin="40,25">
+                <Label Name="LabelRoutinesEmpty" Visibility="Hidden" Content="Sigue una rutina para comenzar" Opacity="0.6" FontFamily="Inter" FontSize="28" Margin="0,0,0,100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <ListView x:Name="List_FavoritesRoutines" Margin="10" SelectionMode="Single" SelectionChanged="ListRoutines_SelectionChanged">
 
                     <ListView.ItemTemplate>
@@ -50,19 +51,19 @@
                                             <Label Content="{Binding Name}" HorizontalAlignment="Left" Margin="0,0,0,-8" Foreground="#000000"  FontSize="18" FontWeight="bold"></Label>
                                             <Label Content="{Binding Country}" HorizontalAlignment="Left" Foreground="#000000" FontSize="16" FontWeight="Light"></Label>
                                         </StackPanel>
-                                        <Image Grid.Column="1" Source="/Img/Icon_EmptyHeart.png" Height="25" HorizontalAlignment="Right" Cursor="Hand" VerticalAlignment="Top" Margin="0,25,0,0">
+                                        <Image Grid.Column="1" Source="/Img/Icon_FullHeart.png" Height="25" HorizontalAlignment="Right" MouseLeftButtonDown="Button_Dislike_Clic" Cursor="Hand" VerticalAlignment="Top" Margin="0,25,0,0">
                                             <Image.Effect>
                                                 <DropShadowEffect ShadowDepth="0" BlurRadius="7" Opacity=".50">
 
                                                 </DropShadowEffect>
                                             </Image.Effect>
                                             <Image.ToolTip>
-                                                <ToolTip Content="Me gusta">
+                                                <ToolTip Content="No me gusta">
 
                                                 </ToolTip>
                                             </Image.ToolTip>
                                         </Image>
-                                        <Image Grid.Column="1" Source="/Img/Icon_FullHeart.png" Height="25" Visibility="Collapsed" Cursor="Hand" MouseLeftButtonDown="Button_Like_Clic">
+                                        <Image Grid.Column="1" Source="/Img/Icon_FullHeart.png" Height="25" Visibility="Collapsed" Cursor="Hand">
                                             <Image.Effect>
                                                 <DropShadowEffect ShadowDepth="0" BlurRadius="7" Opacity=".50">
 

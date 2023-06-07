@@ -17,7 +17,19 @@
             </Grid.RowDefinitions>
 
             <Border Grid.Row="0">
-                <Label Content="Detalles de Rutina" FontFamily="Inter" FontSize="28" FontWeight="SemiBold" Margin="40,10,0,0"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Detalles de Rutina" FontFamily="Inter" FontSize="28" FontWeight="SemiBold" Margin="40,10,0,0"/>
+                    <Border Margin="750,0,0,0">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="25" Opacity="0.3"/>
+                        </Border.Effect>
+                        <Button FontFamily="Inter" FontWeight="Light" ToolTip="Regresar" Click="Button_NavigateBack_Clic" Background="#f3f3f3" BorderThickness="0" Foreground="Black">
+                            <Button.Content>
+                                <Image Source="/Img/Icon_Return.png"/>
+                            </Button.Content>
+                        </Button>
+                    </Border>
+                </StackPanel>
             </Border>
             
             <Border Margin="40,0,0,0" Grid.Row="1">

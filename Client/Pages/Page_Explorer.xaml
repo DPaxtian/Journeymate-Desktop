@@ -126,7 +126,7 @@
                                         <Label Content="{Binding Name}" HorizontalAlignment="Left" Margin="0,0,0,-8" Foreground="#000000"  FontSize="18" FontWeight="bold"></Label>
                                         <Label Content="{Binding Country}" HorizontalAlignment="Left" Foreground="#000000" FontSize="16" FontWeight="Light"></Label>
                                     </StackPanel>
-                                    <Image Grid.Column="1" Source="/Img/Icon_EmptyHeart.png" Height="25" HorizontalAlignment="Right" Cursor="Hand" VerticalAlignment="Top" Margin="0,25,0,0">
+                                    <Image Name="Image_EmptyHeart" Visibility="Visible" Grid.Column="1" Source="/Img/Icon_EmptyHeart.png" Height="25" PreviewMouseLeftButtonDown="Button_Like_Clic" HorizontalAlignment="Right" Cursor="Hand" VerticalAlignment="Top" Margin="0,25,0,0">
                                         <Image.Effect>
                                             <DropShadowEffect ShadowDepth="0" BlurRadius="7" Opacity=".50">
 
@@ -138,7 +138,7 @@
                                             </ToolTip>
                                         </Image.ToolTip>
                                     </Image>
-                                    <Image Grid.Column="1" Source="/Img/Icon_FullHeart.png" Height="25" Visibility="Collapsed" Cursor="Hand" MouseLeftButtonDown="Button_Like_Clic">
+                                    <Image Name="Image_FullHeart" Grid.Column="1" Source="/Img/Icon_FullHeart.png" Height="25" Visibility="Hidden" Cursor="Hand" PreviewMouseLeftButtonDown="Button_Like_Clic" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,25,0,0">
                                         <Image.Effect>
                                             <DropShadowEffect ShadowDepth="0" BlurRadius="7" Opacity=".50">
 

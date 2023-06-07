@@ -19,6 +19,7 @@
         </Grid>
 
         <Grid Grid.Row="1" Margin="40,25">
+            <Label Name="LabelRoutinesEmpty" Visibility="Hidden" Opacity="0.6" Content="Agrega una rutina para comenzar" FontFamily="Inter" FontSize="28" Margin="0,0,0,100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <ListView x:Name="List_MyRoutines" Margin="10" SelectionMode="Single" SelectionChanged="ListRoutines_SelectionChanged">
 
                 <ListView.ItemTemplate>
@@ -47,7 +48,7 @@
                                         <Label Content="{Binding Name}" HorizontalAlignment="Left" Margin="0,0,0,-8" Foreground="#000000"  FontSize="18" FontWeight="bold"></Label>
                                         <Label Content="{Binding Country}" HorizontalAlignment="Left" Foreground="#000000" FontSize="16" FontWeight="Light"></Label>
                                     </StackPanel>
-                                    <Image Grid.Column="1" Source="/Img/Icon_Delete.png" Height="22" MouseLeftButtonDown="Button_Delete_Clic" HorizontalAlignment="Right" Cursor="Hand" VerticalAlignment="Top" Margin="0,25,45,0">
+                                    <Image Grid.Column="1" Source="/Img/Icon_Delete.png" Height="22" PreviewMouseLeftButtonDown="Button_Delete_Clic" HorizontalAlignment="Right" Cursor="Hand" VerticalAlignment="Top" Margin="0,25,45,0">
                                         <Image.ToolTip>
                                             <ToolTip Content="Eliminar"/>
                                         </Image.ToolTip>

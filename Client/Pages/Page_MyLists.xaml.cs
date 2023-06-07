@@ -36,7 +36,14 @@ namespace Client.Pages
             try
             {
                 myRoutines = await RoutineLogic.GetRoutinesCreated(MainWindow.UserLogged.Username);
-                List_MyRoutines.ItemsSource = myRoutines;
+                if(myRoutines != null)
+                {
+                    List_MyRoutines.ItemsSource = myRoutines;
+                    if (myRoutines.Count == 0)
+                    {
+                        LabelRoutinesEmpty.Visibility = Visibility.Visible;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -54,7 +61,47 @@ namespace Client.Pages
             }
         }
 
-        private void Button_Delete_Clic(object sender, MouseButtonEventArgs e)
+        private async void Button_Delete_Clic(object sender, MouseButtonEventArgs e)
+        {
+            List_MyRoutines.IsEnabled = false;
+            Image button = (Image)sender;
+            DependencyObject container = VisualTreeHelper.GetParent(button);
+            int statusCode = 500;
+
+            while (!(container is ListBoxItem) && container != null)
+            {
+                container = VisualTreeHelper.GetParent(container);
+            }
+
+            if (container is ListBoxItem listBoxItem)
+            {
+                Routine routineSelected = (Routine)List_MyRoutines.ItemContainerGenerator.ItemFromContainer(listBoxItem);
+
+
+                var messageResult = MessageBox.Show("¿Desea eliminar la rutina? Esta accion no se puede deshacer", "Eliminar rutina", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (messageResult == MessageBoxResult.Yes)
+                {
+                    statusCode = await RoutineLogic.DeleteRoutine(routineSelected.Id);
+
+
+                    if (statusCode == 200)
+                    {
+                        MessageBox.Show("Rutina eliminada con exito!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                        FillMyRoutinesList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un problema al eliminar la rutina", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                }
+                List_MyRoutines.IsEnabled = true;
+            }
+        }
+
+
+        private void Button_Edit_Clic(object sender, MouseButtonEventArgs e)
         {
             List_MyRoutines.IsEnabled = false;
             Image button = (Image)sender;
@@ -67,14 +114,11 @@ namespace Client.Pages
 
             if (container is ListBoxItem listBoxItem)
             {
-                int index = List_MyRoutines.ItemContainerGenerator.IndexFromContainer(listBoxItem);
-                Console.WriteLine(index.ToString());
+                Routine routineSelected = (Routine)List_MyRoutines.ItemContainerGenerator.ItemFromContainer(listBoxItem);
+
+                Page_EditRoutine.routine = routineSelected;
+                MainWindow.Instance.Frame_Page.Navigate(new Uri("/Pages/Page_EditRoutine.xaml", UriKind.Relative));
             }
-        }
-
-        private void Button_Edit_Clic(object sender, MouseButtonEventArgs e)
-        {
-
         }
     }
 }

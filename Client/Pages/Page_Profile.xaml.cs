@@ -49,5 +49,11 @@ namespace Client.Pages
             }
             
         }
+
+        private void Button_Logout_Clic(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.UserLogged = null;
+            MainWindow.Instance.Frame_Page.Navigate(new Uri("/Pages/Page_Login.xaml", UriKind.Relative));
+        }
     }
 }

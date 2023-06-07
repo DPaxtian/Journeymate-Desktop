@@ -93,8 +93,6 @@ namespace Logic
         }
 
 
-
-
         public static async Task<int> SaveRoutine(string username, Routine routine)
         {
             int resultCode = (int)StatusCode.ProccessError;
@@ -127,6 +125,123 @@ namespace Logic
             {
                 Console.WriteLine("There is an error saving the routine: " + ex);
             }
+            return resultCode;
+        }
+
+
+        public static async Task<int> DeleteRoutine(string idRoutine)
+        {
+            int resultCode = (int)StatusCode.ProccessError;
+
+            try
+            {
+                HttpClient server = new HttpClient();
+                string url = "http://localhost:9000/api/" + apiVersion + "/routines/" + idRoutine;
+                HttpResponseMessage message = await server.DeleteAsync(url);
+
+                resultCode = (int)message.StatusCode;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("There is an error deleting the routine: " + ex);
+            }
+
+            return resultCode;
+        }
+
+
+        public static async Task<int> UpdateRoutine(string idRoutine, Routine routineToUpdate)
+        {
+            int resultCode = (int)StatusCode.ProccessError;
+
+            try
+            {
+                var data = new
+                {
+                    name = routineToUpdate.Name,
+                    city = routineToUpdate.City,
+                    country = routineToUpdate.Country,
+                    routine_description = routineToUpdate.Routine_Description,
+                    visibility = routineToUpdate.Visibility,
+                    label_category = routineToUpdate.Label_Category,
+                    state_country = routineToUpdate.State_Country,
+                    town = routineToUpdate.Town,
+                    followers = routineToUpdate.Followers,
+                    routine_creator = routineToUpdate.Routine_Creator
+                };
+                string dataToSend = JsonConvert.SerializeObject(data);
+
+
+                HttpClient server = new HttpClient();
+                string url = "http://localhost:9000/api/" + apiVersion + "/routines/" + idRoutine;
+                HttpContent contentToSend = new StringContent(dataToSend, Encoding.UTF8, "application/json");
+                HttpResponseMessage message = await server.PutAsync(url, contentToSend);
+
+                resultCode = (int)message.StatusCode;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("There is an error deleting the routine: " + ex);
+            }
+
+            return resultCode;
+        }
+
+
+        public static async Task<int> FollowRoutine(string usarname, string idRoutine)
+        {
+            int resultCode = (int)StatusCode.ProccessError;
+
+            try
+            {
+                var data = new
+                {
+                    username = usarname,
+                    idRoutine = idRoutine
+                };
+                string dataToSend = JsonConvert.SerializeObject(data);
+
+                HttpClient server = new HttpClient();
+                string url = "http://localhost:9000/api/" + apiVersion + "/routines/followRoutine";
+                HttpContent contentToSend = new StringContent(dataToSend, Encoding.UTF8, "application/json");
+                HttpResponseMessage message = await server.PostAsync(url, contentToSend);
+
+                resultCode = (int)message.StatusCode;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("There is an error following the routine: " + ex);
+            }
+
+            return resultCode;
+        }
+
+
+        public static async Task<int> UnfollowRoutine(string usarname, string idRoutine)
+        {
+            int resultCode = (int)StatusCode.ProccessError;
+
+            try
+            {
+                var data = new
+                {
+                    username = usarname,
+                    idRoutine = idRoutine
+                };
+                string dataToSend = JsonConvert.SerializeObject(data);
+
+                HttpClient server = new HttpClient();
+                string url = "http://localhost:9000/api/" + apiVersion + "/routines/unfollowRoutine";
+                HttpContent contentToSend = new StringContent(dataToSend, Encoding.UTF8, "application/json");
+                HttpResponseMessage message = await server.PostAsync(url, contentToSend);
+
+                resultCode = (int)message.StatusCode;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There is an error following the routine: " + ex);
+            }
+
             return resultCode;
         }
     }

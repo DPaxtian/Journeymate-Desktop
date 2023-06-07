@@ -80,6 +80,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Page_EditRoutine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Page_AddRoutine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,6 +122,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Page_EditRoutine.xaml.cs">
+      <DependentUpon>Page_EditRoutine.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Page_AddRoutine.xaml.cs">
       <DependentUpon>Page_AddRoutine.xaml</DependentUpon>
     </Compile>
@@ -233,6 +240,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Img\Icon_Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_Logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_Return.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

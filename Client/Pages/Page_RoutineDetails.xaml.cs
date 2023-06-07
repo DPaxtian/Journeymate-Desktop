@@ -51,10 +51,23 @@ namespace Client.Pages
                 Label_RoutineCreator.Content = routineDetails.Routine_Creator;
                 Label_RoutineUbication.Content = routineDetails.City + ", " + routineDetails.Country;
                 Label_RoutineCategory.Content = routineDetails.Label_Category;
-                Label_RoutineBudget.Content = 0;
+                Label_RoutineBudget.Content = CalculateRoutineBudget().ToString();
                 Label_RoutineFollowers.Content = routineDetails.Followers;
                 Label_RoutineDescription.Text = routineDetails.Routine_Description;
             }
+        }
+
+
+        private int CalculateRoutineBudget()
+        {
+            int budget = 0;
+
+            foreach(var task in tasks)
+            {
+                budget += task.Budget;
+            }
+
+            return budget;
         }
 
 
@@ -62,6 +75,23 @@ namespace Client.Pages
         {
             tasks = await TaskLogic.GetTasksByRoutineId(routineDetails.Id);
             List_Tasks.ItemsSource = tasks;
+        }
+
+
+        private void Button_NavigateBack_Clic(object sender, RoutedEventArgs e)
+        {
+            if(MainWindow.Instance.TabPages.SelectedItem == MainWindow.Instance.TabItem_Explorer)
+            {
+                MainWindow.Instance.Frame_Page.Navigate(new Uri("/Pages/Page_Explorer.xaml", UriKind.Relative));
+            }
+            if (MainWindow.Instance.TabPages.SelectedItem == MainWindow.Instance.TabItem_MyLists)
+            {
+                MainWindow.Instance.Frame_Page.Navigate(new Uri("/Pages/Page_MyLists.xaml", UriKind.Relative));
+            }
+            if (MainWindow.Instance.TabPages.SelectedItem == MainWindow.Instance.TabItem_Favorites)
+            {
+                MainWindow.Instance.Frame_Page.Navigate(new Uri("/Pages/Page_Favorites.xaml", UriKind.Relative));
+            }
         }
     }
 }
