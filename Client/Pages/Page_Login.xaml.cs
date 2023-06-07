@@ -37,7 +37,7 @@ namespace Client.Pages
                     if (userToLogin != null)
                     {
                         MainWindow.UserLogged = userToLogin;
-                        MainWindow.Instance.Frame_Page.Navigate(new Uri("/Pages/Page_Profile.xaml", UriKind.Relative));
+                        MainWindow.Instance.NavigateToExplorer();
                     }
                     else
                     {

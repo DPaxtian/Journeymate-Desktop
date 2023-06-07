@@ -25,6 +25,7 @@ namespace Client.Pages
     /// </summary>
     public partial class Page_AddRoutine : Page
     {
+        static Routine routineToUpdate = new Routine();
         List<Models.Task> createdTasks = new List<Models.Task>();
         ObservableCollection<Models.Task> observableTasks = new ObservableCollection<Models.Task>();
 
@@ -219,7 +220,6 @@ namespace Client.Pages
             }
             return isValid;
         }
-
 
         private childItem FindVisualChild<childItem>(DependencyObject obj) where childItem : DependencyObject
         {

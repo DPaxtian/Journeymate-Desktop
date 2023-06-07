@@ -19,12 +19,20 @@
         <Grid HorizontalAlignment="Center" Margin="150,0,0,0" Width="1000">
         <StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Mi Perfil" FontFamily="Inter" Width="700" FontSize="30" FontWeight="SemiBold" Margin="50,30,0,0"/>
-                    <Image Source="/Img/Icon_EditProfile.png" Cursor="Hand" MouseLeftButtonDown="Button_EditProfile_Clic" Width="30" Height="30" Stretch="UniformToFill" Margin="30,20,0,0">
+                <Label Content="Mi Perfil" FontFamily="Inter" FontSize="30" FontWeight="SemiBold" Margin="50,30,0,0"/>
+                
+                <Image Source="/Img/Icon_EditProfile.png" Cursor="Hand" MouseLeftButtonDown="Button_EditProfile_Clic" Width="30" Height="30" Stretch="UniformToFill" Margin="20,25,0,0">
+                   <Image.ToolTip>
+                        <ToolTip Content="Editar perfil"></ToolTip>
+                   </Image.ToolTip>
+                </Image>
+                
+                    <Image Source="/Img/Icon_Logout.png" Width="25" Height="25" Margin="630,20,0,0" Cursor="Hand" MouseLeftButtonDown="Button_Logout_Clic">
                         <Image.ToolTip>
-                            <ToolTip Content="Editar perfil"></ToolTip>
+                            <ToolTip Content="Cerrar Sesión"></ToolTip>
                         </Image.ToolTip>
                     </Image>
+                
                 </StackPanel>
 
             <StackPanel Orientation="Horizontal">

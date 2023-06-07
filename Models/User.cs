@@ -39,6 +39,9 @@ namespace Models
         [JsonProperty("country")]
         public string Country { get; set; }
 
+        [JsonProperty("role")]
+        public string Role { get; set; }
+
         [JsonProperty("user_description")]
         public string UserDescription { get; set; }
 

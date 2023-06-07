@@ -88,6 +88,18 @@ namespace Client
             TabPages.SelectedItem = TabItem_Explorer;
         }
 
+
+        public void NavigateToFavoritesList()
+        {
+            TabPages.SelectedItem = TabItem_Favorites;
+        }
+
+
+        public void NavigateToLogin()
+        {
+            TabPages.SelectedItem = TabItem_Profile;
+        }
+
     }
 }
 
