@@ -56,7 +56,7 @@
                         </DropShadowEffect>
                     </Border.Effect>
 
-                    <TextBox x:Name="TextBox_Search" Loaded="TexBox_Loaded">
+                    <TextBox x:Name="TextBox_Search" Loaded="TexBox_Loaded" SelectionChanged="TexboxSearch_SelectionChanged">
                         <TextBox.Style>
                             <Style TargetType="TextBox">
                                 <Setter Property="Background" Value="Transparent" />

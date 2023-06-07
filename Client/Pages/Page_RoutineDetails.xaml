@@ -8,51 +8,149 @@
       d:DesignHeight="720" d:DesignWidth="1180"
       Title="Page_RoutineDetails">
 
+    <Page.Resources>
+        <Style x:Key="TemplateCompleted" TargetType="Image">
+            <Setter Property="Visibility" Value="Hidden" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding isCompleted}" Value="True">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
     <Grid Background="#f3f3f3">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
 
-            <Border Grid.Row="0">
-                <Label Content="Detalles de Rutina" FontFamily="Inter" FontSize="28" FontWeight="SemiBold" Margin="40,10,0,0"/>
-            </Border>
-            
-            <Border Margin="40,0,0,0" Grid.Row="1">
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Name="Label_RoutineTitle" Width="700" FontWeight="SemiBold" FontFamily="Inter" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,0,0,0"/>
-                        <Label Content="De:" FontWeight="SemiBold" FontFamily="Inter" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="95,0,0,0"/>
-                        <Label Name="Label_RoutineCreator" Content="dpax" FontWeight="Light" FontFamily="Inter" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Ubicación:" FontWeight="SemiBold" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,10,0,0"/>
-                        <Label Name="Label_RoutineUbication" Width="900" FontWeight="Light" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Categoria:" FontWeight="SemiBold" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,10,0,0"/>
-                        <Label Name="Label_RoutineCategory" Content="Delicioso" Width="900" FontWeight="Light" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Presupuesto:" FontWeight="SemiBold" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,10,0,0"/>
-                        <Label Content="$" FontWeight="Light" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
-                        <Label Name="Label_RoutineBudget" Content="800" Width="100" FontWeight="Light" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Seguidores:" FontWeight="SemiBold" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,10,0,0"/>
-                        <Label Name="Label_RoutineFollowers" Content="1004" Width="100" FontWeight="Light" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
-                    </StackPanel>
-                    <Label Content="Descripción:" FontWeight="SemiBold" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,10,0,0"/>
-                    <TextBlock Name="Label_RoutineDescription" Text="1004" Width="1070" Height="60" TextWrapping="Wrap" FontWeight="Light" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="55,10,0,0"/>
-                </StackPanel>
-            </Border>
+                </Grid.RowDefinitions>
 
-            <Border Grid.Row="2">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Border Grid.Row="0">
+                    <Label Content="Detalles de Rutina" FontFamily="Inter" FontSize="28" FontWeight="SemiBold" Margin="40,10,0,0"/>
+                </Border>
+
+                <Border Margin="40,0,0,15" Grid.Row="1">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Name="Label_RoutineTitle" Width="700" FontWeight="SemiBold" FontFamily="Inter" FontSize="25" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,0,0,0"/>
+                            <Label Content="De:" FontWeight="SemiBold" FontFamily="Inter" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="95,0,0,0"/>
+                            <Label Name="Label_RoutineCreator" Content="dpax" FontWeight="Light" FontFamily="Inter" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Ubicación:" FontWeight="SemiBold" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,10,0,0"/>
+                            <Label Name="Label_RoutineUbication" Width="900" FontWeight="Light" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Categoria:" FontWeight="SemiBold" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,10,0,0"/>
+                            <Label Name="Label_RoutineCategory" Content="Delicioso" Width="900" FontWeight="Light" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Presupuesto:" FontWeight="SemiBold" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,10,0,0"/>
+                            <Label Content="$" FontWeight="Light" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                            <Label Name="Label_RoutineBudget" Content="800" Width="100" FontWeight="Light" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Seguidores:" FontWeight="SemiBold" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,10,0,0"/>
+                            <Label Name="Label_RoutineFollowers" Content="1004" Width="100" FontWeight="Light" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Width="860" >
+                                <Label Content="Descripción:" FontWeight="SemiBold" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,10,0,0"/>
+                                <TextBlock Name="Label_RoutineDescription" Text="1004" Width="1070" Height="60" TextWrapping="Wrap" FontWeight="Light" FontFamily="Inter" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="55,10,0,0"/>
+                            </StackPanel>
+                            <Border Name="BackgroundAddTask" CornerRadius="15" Width="150" Height="40">
+                                <Button Name="ButtonAddTask" Content="Agregar tarea" Click="Button_AddNewTask_Click">
+
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="NewTaskScreen" CornerRadius="7" Background="#f3f3f3" Grid.Row="2" Height="340" Margin="80,0,90,20" Visibility="Collapsed" >
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="4" ShadowDepth="0" >
+
+                        </DropShadowEffect>
+                    </Border.Effect>
+
+                    <Grid>
+                        <Grid>
+                            <Border CornerRadius="7" Padding="5" Background="#4193CE" Opacity="0.9" Margin="0,0,0,0">
+                                <StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Name="LabelTittleScreenAddEdit" Content="Nueva tarea" Foreground="#f3f3f3" FontWeight="SemiBold" FontFamily="Inter" Margin="30,10,720,20"  FontSize="22"/>
+                                        <Image Name="ButtonSaveNewTask" Source="/Img/Check Mark.png" Width="35" Margin="0,0,20,0" MouseLeftButtonDown="Button_AddSaveTask_Click" Cursor="Hand"/>
+                                        <Image Name="ButtonEditTask" Visibility="Collapsed" Source="/Img/Check Mark.png" Width="35" Margin="0,0,20,0" MouseLeftButtonDown="Button_SaveTaskChanges_Click" Cursor="Hand"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Titulo" Foreground="#f3f3f3" FontWeight="SemiBold" FontFamily="Inter" Margin="30,0,0,0"  FontSize="18"/>
+                                        <Label Name="LabelTaskTitleError" Visibility="Hidden" Content="*" Foreground="Red" FontWeight="SemiBold" FontFamily="Inter" Margin="30,0,0,3"  FontSize="18"/>
+                                    </StackPanel>
+
+                                    <Border Background="#f3f3f3" CornerRadius="7" Margin="30,0,30,20" Width="auto">
+                                        <Border.Effect>
+                                            <DropShadowEffect BlurRadius="25" Opacity="0.25" />
+                                        </Border.Effect>
+                                        <TextBox Name="TextBox_TaskTitle" MaxLength="30" FontSize="16" Height="35"  Style="{StaticResource MaterialDesignTextBox}"/>
+                                    </Border>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Dirección" Foreground="#f3f3f3" FontWeight="SemiBold" FontFamily="Inter" Margin="35,10,0,0"  FontSize="18"/>
+                                        <Label Name="LabelTaskAddressError" Visibility="Hidden" Content="*" Foreground="Red" FontWeight="SemiBold" FontFamily="Inter" Margin="0,10,0,0"  FontSize="18"/>
+                                        <Label Content="Presupuesto" Foreground="#f3f3f3" FontWeight="SemiBold" FontFamily="Inter" Margin="410,10,0,0"  FontSize="18"/>
+                                        <Label Name="LabelTaskBudgetError" Visibility="Hidden" Content="*" Foreground="Red" FontWeight="SemiBold" FontFamily="Inter" Margin="0,10,0,0"  FontSize="18"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border Background="#f3f3f3" CornerRadius="7" Margin="35,0,95,0" >
+                                            <Border.Effect>
+                                                <DropShadowEffect BlurRadius="25" Opacity="0.25" />
+                                            </Border.Effect>
+                                            <TextBox Name="TextBox_Address"  FontSize="16" MaxLength="50" Width="380" Height="35" Style="{StaticResource MaterialDesignTextBox}"/>
+                                        </Border>
+                                        <Border Background="#f3f3f3" CornerRadius="7" Margin="35,0,30,0" >
+                                            <Border.Effect>
+                                                <DropShadowEffect BlurRadius="25" Opacity="0.25" />
+                                            </Border.Effect>
+                                            <TextBox Name="TextBox_Budget" MaxLength="5" FontSize="16" Width="390" Height="35" Style="{StaticResource MaterialDesignTextBox}" PreviewTextInput="TextBox_ValidateOnlyNumberst"/>
+                                        </Border>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Descripción" Foreground="#f3f3f3" FontWeight="SemiBold" FontFamily="Inter" Margin="30,20,0,0"  FontSize="18"/>
+                                        <Label Name="LabelTaskDescriptionError" Visibility="Hidden" Content="*" Foreground="Red" FontWeight="SemiBold" FontFamily="Inter" Margin="0,20,0,0"  FontSize="18"/>
+                                    </StackPanel>
+
+                                    <Border Background="#f3f3f3" CornerRadius="7" Width="auto" Margin="35,0,35,0" >
+                                        <Border.Effect>
+                                            <DropShadowEffect BlurRadius="25" Opacity="0.25" />
+                                        </Border.Effect>
+                                        <TextBox Name="TextBox_TaskDescription" MaxLength="100" FontSize="16" Height="35"  Style="{StaticResource MaterialDesignTextBox}"/>
+                                    </Border>
+
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Grid>
+
+                </Border>
+
+
+                <Border Grid.Row="3">
                     <ListView x:Name="List_Tasks" Width="1000" Margin="0,0,0,10" SelectionMode="Single">
-
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Border x:Name="ShadowBorder" CornerRadius="15" BorderThickness=".2" Background="#f3f3f3" Cursor="Hand">
@@ -62,58 +160,83 @@
                                     <Border.ToolTip>
                                         <ToolTip Content="Ver detalles"/>
                                     </Border.ToolTip>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
 
-                                    <Grid Margin="30,5" Width="910">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition></RowDefinition>
-                                            <RowDefinition></RowDefinition>
-                                            <RowDefinition></RowDefinition>
-                                        </Grid.RowDefinitions>
-
-                                        <Grid Grid.Row="0" >
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition></ColumnDefinition>
-                                                <ColumnDefinition></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
-                                            <StackPanel Grid.Column="0" Margin="0,15">
-                                                <Label Content="{Binding Name}" HorizontalAlignment="Left" Margin="0,0,0,-8" Foreground="#000000"  FontSize="18" FontWeight="bold"></Label>
-                                                <Label Content="{Binding Address}" HorizontalAlignment="Left" Foreground="#000000" FontSize="16" FontWeight="Light"></Label>
-                                            </StackPanel>
-                                            <Image Grid.Column="1" Source="/Img/Icon_Delete.png" Height="22" MouseLeftButtonDown="Button_DeleteTaks_Clic" HorizontalAlignment="Right" Cursor="Hand" VerticalAlignment="Top" Margin="0,25,45,0">
-                                                <Image.ToolTip>
-                                                    <ToolTip Content="Eliminar"/>
-                                                </Image.ToolTip>
-                                            </Image>
-                                            <Image Grid.Column="1" Source="/Img/Icon_EditProfile.png" Height="25" MouseLeftButtonDown="Button_EditTaks_Clic" HorizontalAlignment="Right" Cursor="Hand" VerticalAlignment="Top" Margin="0,25,0,0">
-                                                <Image.ToolTip>
-                                                    <ToolTip Content="Editar"/>
-                                                </Image.ToolTip>
+                                        <Grid Grid.Column="0" VerticalAlignment="Top" Margin="0,25,0,0" >
+                                            <Image Source="/Img/Icon_Unchecked.png" Width="30" Height="30" Cursor="Hand" PreviewMouseDown="Button_CompleteTask_Click"/>
+                                            <Image Source="/Img/Check Mark.png" Width="25" Height="auto" PreviewMouseDown="Button_CompleteTask_Click">
+                                                <Image.Style>
+                                                    <Style TargetType="Image">
+                                                        <Setter Property="Visibility" Value="Hidden" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsCompleted}" Value="True">
+                                                                <Setter Property="Visibility" Value="Visible" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
                                             </Image>
                                         </Grid>
 
-                                        <TextBlock Grid.Row="1" Text="{Binding Task_Description}" Margin="0,0,0,15" FontSize="16" HorizontalAlignment="Left"></TextBlock>
+                                        <Grid Margin="0,5" Width="920" Grid.Column="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
 
-                                        <Grid Grid.Row="2">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition></ColumnDefinition>
-                                                <ColumnDefinition></ColumnDefinition>
-                                                <ColumnDefinition Width="350"></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
+                                            <Grid Grid.Row="0" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Grid.Column="0" Margin="0,15">
+                                                    <Label Content="{Binding Name}" HorizontalAlignment="Left" Margin="0,0,0,-8" Foreground="#000000"  FontSize="18" FontWeight="bold"></Label>
+                                                    <Label Content="{Binding Address}" HorizontalAlignment="Left" Foreground="#000000" FontSize="16" FontWeight="Light"></Label>
+                                                </StackPanel>
 
-                                            <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center" Margin="150,0,0,0">
-                                                <TextBlock Text="Presupuesto:" FontSize="18" FontWeight="Light"></TextBlock>
-                                                <TextBlock Text="$" FontSize="18" FontWeight="Light" Margin="10,0,0,0"></TextBlock>
-                                                <TextBlock Text="{Binding Budget}" FontWeight="DemiBold" FontSize="18" Margin="0,0,0,10" HorizontalAlignment="Center"></TextBlock>
-                                            </StackPanel>
+                                                <Image Grid.Column="1" Source="/Img/Icon_Delete.png" Height="22" MouseLeftButtonDown="Button_DeleteTaks_Clic" HorizontalAlignment="Right" Cursor="Hand" VerticalAlignment="Top" Margin="0,25,85,0"
+                                   IsHitTestVisible="True">
+                                                    <Image.ToolTip>
+                                                        <ToolTip Content="Eliminar"/>
+                                                    </Image.ToolTip>
+                                                </Image>
+                                                <Image Grid.Column="1" Source="/Img/Icon_EditProfile.png" Height="25" MouseLeftButtonDown="Button_EditTaks_Clic" HorizontalAlignment="Right" Cursor="Hand" VerticalAlignment="Top" Margin="0,25,30,0"
+                                   IsHitTestVisible="True">
+                                                    <Image.ToolTip>
+                                                        <ToolTip Content="Editar"/>
+                                                    </Image.ToolTip>
+                                                </Image>
+                                            </Grid>
+
+                                            <TextBlock Grid.Row="1" Text="{Binding Task_Description}" Margin="0,0,0,15" FontSize="16" HorizontalAlignment="Left"></TextBlock>
+
+                                            <Grid Grid.Row="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="350"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center" Margin="150,0,0,0">
+                                                    <TextBlock Text="Presupuesto:" FontSize="18" FontWeight="Light"></TextBlock>
+                                                    <TextBlock Text="$" FontSize="18" FontWeight="Light" Margin="10,0,0,0"></TextBlock>
+                                                    <TextBlock Text="{Binding Budget}" FontWeight="DemiBold" FontSize="18" Margin="0,0,0,10" HorizontalAlignment="Center"></TextBlock>
+                                                </StackPanel>
+                                            </Grid>
                                         </Grid>
                                     </Grid>
                                 </Border>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                </ScrollViewer>
-            </Border>
-            
-        </Grid>
+
+                </Border>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

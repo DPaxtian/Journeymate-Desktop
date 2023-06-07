@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-//faltan atributos aun...
 namespace Models
 {
     public partial class Routine
@@ -67,5 +66,6 @@ namespace Models
         [JsonProperty("routine")]
         public string RoutineString { get; set; }
     }
+
 }
 

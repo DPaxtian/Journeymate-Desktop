@@ -95,9 +95,9 @@ namespace Logic
 
 
 
-        public static async Task<int> SaveRoutine(string username, Routine routine)
+        public static async Task<string> SaveRoutine(string username, Routine routine)
         {
-            int resultCode = (int)StatusCode.ProccessError;
+            string idRoutineCreated = null;
 
             try
             {
@@ -121,13 +121,19 @@ namespace Logic
                 HttpContent contentToSend = new StringContent(dataToSend, Encoding.UTF8, "application/json");
                 HttpResponseMessage messageResponse = await server.PostAsync(url, contentToSend);
 
-                resultCode = (int)messageResponse.StatusCode;
+                if (messageResponse.IsSuccessStatusCode)
+                {
+                    string jsonResponse = await messageResponse.Content.ReadAsStringAsync();
+                    ApiResponseRoutineCreated routineCreated = JsonConvert.DeserializeObject<ApiResponseRoutineCreated>(jsonResponse);
+                    idRoutineCreated = routineCreated.Response;
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("There is an error saving the routine: " + ex);
             }
-            return resultCode;
+
+            return idRoutineCreated;
         }
     }
 }

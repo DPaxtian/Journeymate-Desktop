@@ -30,6 +30,7 @@ namespace Client.Pages
             FillRountinesList();
         }
 
+
         private async void FillRountinesList()
         {
             try
@@ -43,7 +44,6 @@ namespace Client.Pages
             }
         }
        
-
 
         private void TexBox_Loaded(object sender, RoutedEventArgs e)
         {
@@ -67,6 +67,19 @@ namespace Client.Pages
 
         }
 
-
+        private void TexboxSearch_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            var searchTextbox = sender as TextBox;
+            if (searchTextbox.Text != "")
+            {
+                var filteredList = routines.Where(x => x.Name.ToLower().Contains(searchTextbox.Text.ToLower()));
+                List_Routines.ItemsSource = null;
+                List_Routines.ItemsSource = filteredList;
+            }
+            else
+            {
+                List_Routines.ItemsSource = routines;
+            }
+        }
     }
 }

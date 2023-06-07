@@ -234,6 +234,15 @@
   <ItemGroup>
     <Resource Include="Img\Icon_Delete.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Check Mark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_Unchecked.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

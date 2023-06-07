@@ -72,25 +72,45 @@ namespace Client.Pages
                     Routine_Description = TextBox_RoutineDescription.Text
                 };
 
-                if(ListBox_TasksCards.Items.Count > 0)
+                string idRoutineCreated = null;
+                if (ListBox_TasksCards.Items.Count > 0)
                 {
-                    if (SaveTasksCreated())
+                    idRoutineCreated = await RoutineLogic.SaveRoutine(MainWindow.UserLogged.Username, routineCreated);
+
+                    if (idRoutineCreated != null)
                     {
-                        statusCode = await RoutineLogic.SaveRoutine(MainWindow.UserLogged.Username, routineCreated);
-                        //Aqui va el metodo que mete asocia las tareas a la rutina
+                        if (SaveTasksCreated())
+                        {
+                            foreach(Models.Task task in createdTasks)
+                            {
+                                statusCode = await TaskLogic.AddNewTaskToRoutine(idRoutineCreated, task);
+                            }
+                        }
                     }
+                    
                 }
                 else
                 {
-                    //Si el usuario no creo tareas solo registra la rutina
-                    statusCode = await RoutineLogic.SaveRoutine(MainWindow.UserLogged.Username, routineCreated);
+                    idRoutineCreated = await RoutineLogic.SaveRoutine(MainWindow.UserLogged.Username, routineCreated);
+                    if (idRoutineCreated != null)
+                    {
+                        statusCode = (int)StatusCode.Ok;
+                    }
                 }
 
 
-                if(statusCode == 200)
+                if(statusCode == (int)StatusCode.Ok && idRoutineCreated != null)
                 {
                     MessageBox.Show("Rutina guardada con exito!", "Exito" ,MessageBoxButton.OK, MessageBoxImage.Information);
                     NavigateToMyListsPages();
+                }
+                else if(idRoutineCreated != null && statusCode != (int)StatusCode.Ok)
+                {
+                    MessageBox.Show("Ups hubo un error al registrar tus tareas, sin embargo hemos registrado tu rutina y estamos trabajando para solucionar el problma, por favor registra tus tareas mas tarde", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else if (idRoutineCreated == null && statusCode == (int)StatusCode.ProccessError)
+                {
+                    MessageBox.Show("Ups estmaos presentando problemas, por favor intentalo mas tarde", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }
@@ -189,6 +209,7 @@ namespace Client.Pages
                             Name = taskTitle.Text,
                             Address = taskAddress.Text,
                             Budget = Int32.Parse(taskBudget.Text),
+                            IsCompleted = false,
                             Task_Description = taskDescription.Text,
                         };
 
