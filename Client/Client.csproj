@@ -204,6 +204,10 @@
     <Resource Include="Img\Icon_EditProfile.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ImageService\ImageService.csproj">
+      <Project>{71c33a9a-7190-4a43-8107-9e17c80c94d8}</Project>
+      <Name>ImageService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logic\Logic.csproj">
       <Project>{c880b6bb-4fdc-48e7-86d9-0d498a03957d}</Project>
       <Name>Logic</Name>

@@ -35,19 +35,23 @@
                 
                 </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <Border Width="150" Height="150" HorizontalAlignment="Left" Margin="40,40,0,0">
-                        <Image Source="/Img/ProfilePicture_Logo.png">
-                            <Image.Effect>
-                                <DropShadowEffect Color="Black" Direction="310" BlurRadius="10" ShadowDepth="7" Opacity="0.25"/>
-                            </Image.Effect>
-                        </Image>
-                    </Border>
+
+              
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Hola!, soy" Height="50" Foreground="#AAAAAA" HorizontalContentAlignment="Left" Margin="40,40,0,0" FontSize="32" FontFamily="Inter"/>
-                        <TextBlock Text="Daniel Paxtian" Height="50" TextDecorations="Underline" Margin="5,50,0,0" Name="TextBlock_Name" FontWeight="SemiBold" FontSize="32" FontFamily="Inter"/>
+
+                        <Image Margin="40,20,0,0" Name="Image_ProfilePicture" Width="300" Height="220">
+                            <Image.Clip>
+                                <EllipseGeometry Center="100,100" RadiusX="100" RadiusY="100"/>
+                            </Image.Clip>
+                        </Image>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Hola!, soy" Height="50" Foreground="#AAAAAA" HorizontalContentAlignment="Left" Margin="0,20,0,0" FontSize="32" FontFamily="Inter"/>
+                            <TextBlock Text="Daniel Paxtian" Height="50" TextDecorations="Underline" Margin="5,32,0,0" Name="TextBlock_Name" FontWeight="SemiBold" FontSize="32" FontFamily="Inter"/>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
+               
+
+                
         </StackPanel>
 
         

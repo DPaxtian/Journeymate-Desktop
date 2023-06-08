@@ -137,6 +137,7 @@ namespace Client.Pages
 
         private async void GetFollowedRoutines()
         {
+
             idsRoutinesFollowed = new List<string>();
             List<Routine> routines = await RoutineLogic.GetRoutinesFollowed(MainWindow.UserLogged.Username);
             foreach (Routine item in routines)
@@ -145,6 +146,8 @@ namespace Client.Pages
             }
             CheckLikedRoutines();
         }
+
+
 
         private void CheckLikedRoutines()
         {

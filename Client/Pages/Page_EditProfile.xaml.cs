@@ -1,4 +1,5 @@
 ﻿using Logic;
+using Microsoft.Win32;
 using Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using ImageService;
 
 namespace Client.Pages
 {
@@ -23,6 +26,10 @@ namespace Client.Pages
     /// </summary>
     public partial class Page_EditProfile : Page
     {
+        string pathImage;
+        string nameImage = MainWindow.UserLogged.Username + "ProfilePic";
+
+
         public Page_EditProfile()
         {
             InitializeComponent();
@@ -31,6 +38,7 @@ namespace Client.Pages
 
         private async void Button_SaveProfile_Clic(object sender, RoutedEventArgs e)
         {
+            int statusCode = 500;
             if (ValidateFields())
             {
                 User user = new User{
@@ -44,16 +52,33 @@ namespace Client.Pages
                     UserDescription = TextBox_Description.Text,
                     Age = MainWindow.UserLogged.Age
                 };
-                int statusCode = await UserLogic.EditProfile(user);
 
-                if(statusCode == 200)
+                try
                 {
-                    UpdateUserLogged(MainWindow.UserLogged.Username);
-                    EditProfileSuccessfull();
+                    if(pathImage != null)
+                    {
+                        ImageClient.UploadProfileImage(nameImage, pathImage);
+                        statusCode = await UserLogic.EditProfile(user);
+                    }
+                    else
+                    {
+                        statusCode = await UserLogic.EditProfile(user);
+                    }
+
+                 
+                    if (statusCode == 200)
+                    {
+                        UpdateUserLogged(MainWindow.UserLogged.Username);
+                        EditProfileSuccessfull();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo actualizar el perfil", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
-                else
+                catch(Exception ex)
                 {
-                    MessageBox.Show("No se pudo actualizar el perfil", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Console.WriteLine("An error has been ocurred while updating the profile" + ex.Message);
                 }
             }
         }
@@ -168,6 +193,7 @@ namespace Client.Pages
             MainWindow.Instance.Frame_Page.Navigate(new Uri("/Pages/Page_Profile.xaml", UriKind.Relative));
         }
 
+
         private async void UpdateUserLogged(string username)
         {
             User userUpdated = await UserLogic.RecoverUserByUsername(username);
@@ -177,5 +203,22 @@ namespace Client.Pages
                 MainWindow.UserLogged = userUpdated;
             }
         }
+
+        private void Button_SelectProfileImage_Clic(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            // Filtrar solo archivos de imagen
+            openFileDialog.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                // Obtener la ruta y el nombre de la imagen seleccionada
+                pathImage = openFileDialog.FileName;
+                
+            }
+        }
+
+
     }
 }

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{C880B6BB-4FDC-48E7-86D9-0D498A03957D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageService", "ImageService\ImageService.csproj", "{71C33A9A-7190-4A43-8107-9E17C80C94D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C880B6BB-4FDC-48E7-86D9-0D498A03957D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C880B6BB-4FDC-48E7-86D9-0D498A03957D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C880B6BB-4FDC-48E7-86D9-0D498A03957D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71C33A9A-7190-4A43-8107-9E17C80C94D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C33A9A-7190-4A43-8107-9E17C80C94D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C33A9A-7190-4A43-8107-9E17C80C94D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C33A9A-7190-4A43-8107-9E17C80C94D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
