@@ -7,9 +7,154 @@
       xmlns:local="clr-namespace:Client.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1180"
+      FontFamily="Inter"
       Title="Page_SignUp">
 
+    <Page.Resources>
+        <Style x:Key="CustomMaterialDesignOutlinedPassword" TargetType="{x:Type PasswordBox}" >
+            <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Background" Value="{DynamicResource MaterialDesignTextFieldBoxBackground}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="25,10,10,10" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                        <Grid>
+                            <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="20" />
+                            <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="CustomMaterialDesignRaisedLightButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="#f3f3f3"></SolidColorBrush>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         
+        <Grid Grid.Column="0">
+            <Grid.Background>
+                <SolidColorBrush Color="Black"/>
+            </Grid.Background>
+            <Image Source="/Img/Signup_Background.jpg" Stretch="UniformToFill" Opacity=".4"/>
+            <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Label Content="¡Comienza tu aventura!" HorizontalAlignment="Center" Foreground="#ffffff" FontWeight="Bold" FontSize="24" ></Label>
+                
+                <Label Content="Nombre(s)" Foreground="#ffffff" FontSize="16" Margin="0,0,0,-3"></Label>
+                <Border Background="#D9D9D9" Opacity=".7" CornerRadius="10" Height="40" Width="400" >
+                    <TextBox Name="TextBox_Name" FontSize="14" Loaded="TextBox_Loaded" PreviewTextInput="TextBox_OnlyCharacters" TextChanged="TextChanged_TextBox_Name">
+
+                    </TextBox>
+                </Border>
+                <Label Name="Label_Error_Name" Visibility="Hidden" Content="Este campo es obligatorio" Foreground="#EB4335" FontSize="14" ></Label>
+
+                <Label Content="Apellidos" Foreground="#ffffff" FontSize="16" Margin="0,0,0,-3"></Label>
+                <Border Background="#D9D9D9" Opacity=".7" CornerRadius="10" Height="40" Width="400" >
+                    <TextBox Name="TextBox_Lastname" FontSize="14" Loaded="TextBox_Loaded" PreviewTextInput="TextBox_OnlyCharacters" TextChanged="TextChanged_TextBox_Lastname">
+
+                    </TextBox>
+                </Border>
+                <Label Name="Label_Error_Lastname" Visibility="Hidden" Content="Este campo es obligatorio" Foreground="#EB4335" FontSize="14" ></Label>
+
+                <Label Content="Edad" Foreground="#ffffff" FontSize="16" Margin="0,0,0,-3" ></Label>
+                <Border Background="#D9D9D9" Opacity=".7" CornerRadius="10" Height="40" Width="400">
+                    <TextBox Name="TextBox_Age" FontSize="14" Loaded="TextBox_Loaded" PreviewTextInput="Validate_Only_Numbers" TextChanged="TextChanged_TextBox_Age">
+
+                    </TextBox>
+                </Border>
+                <Label Name="Label_Error_Age" Visibility="Hidden" Content="La edad minima es 14 años" Foreground="#EB4335" FontSize="14" ></Label>
+
+                <Label Content="Correo electronico" Foreground="#ffffff" FontSize="16" Margin="0,0,0,-3"></Label>
+                <Border Background="#D9D9D9" Opacity=".7" CornerRadius="10" Height="40" Width="400">
+                    <TextBox Name="TextBox_Email" FontSize="14" Loaded="TextBox_Loaded" TextChanged="TextChanged_TextBox_Email">
+
+                    </TextBox>
+                </Border>
+                <Label Name="Label_Error_EmailWasRegistered" Visibility="Collapsed" Content="El correo ya fue registrado" Foreground="#EB4335" FontSize="14" ></Label>
+                <Label Name="Label_Error_Email" Visibility="Hidden" Content="El correo es invalido" Foreground="#EB4335" FontSize="14" ></Label>
+
+
+                <Label Content="Contraseña" Foreground="#ffffff" FontSize="16" Margin="0,0,0,-3"></Label>
+                <Border Background="#D9D9D9" Opacity=".7" CornerRadius="10" Height="40" Width="400" >
+                    <PasswordBox Name="PasswordBox_Password" FontSize="14" Loaded="PasswordBox_Loaded" PasswordChanged="PasswordChanged_TextBox_RepeatPassword">
+
+                    </PasswordBox>
+                </Border>
+                <Label Name="Label_Error_Password" Visibility="Hidden" Content="Debe contener al menos una letra mayuscula y un numero" Foreground="#EB4335" FontSize="14" ></Label>
+
+
+                <Label Content="Confirmar contraseña" Foreground="#ffffff" FontSize="16" Margin="0,0,0,-3"></Label>
+                <Border Background="#D9D9D9" Opacity=".7" CornerRadius="10" Height="40" Width="400">
+                    <PasswordBox Name="PasswordBox_RepeatPassword" FontSize="14" Loaded="PasswordBox_Loaded" PasswordChanged="PasswordChanged_TextBox_RepeatPassword">
+
+                    </PasswordBox>
+                </Border>
+                <Label Name="Label_Error_RepeatPassword" Visibility="Hidden" Content="Debe coincidir con la contraseña" Foreground="#EB4335" FontSize="14" ></Label>
+
+
+                <Button Height="40" FontFamily="Inter" Content="Registrarme" FontSize="18" IsDefault="True" Click="Button_SignUp_Clic" Margin="0,10,0,0" Foreground="#f3f3f3" Style="{StaticResource CustomMaterialDesignRaisedLightButton}">
+                    <Button.Background>
+                        <SolidColorBrush Color="#5DCC42"></SolidColorBrush>
+                    </Button.Background>
+                </Button>
+
+                <Border Name="Message_SignUpError" Visibility="Hidden"  CornerRadius="15,15,0,0" Height="65"  Margin="0,15,0,0" Background="#EB4335">
+                    <TextBlock  Text="Hubo un error con tu registro, estamos trabajando en ello" Margin="5"  FontWeight="Light" HorizontalAlignment="Center" Foreground="#f3f3f3" FontSize="16" ></TextBlock>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <StackPanel  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="100,0">
+
+                <Image Source="/Img/Jorneymate_Isotype_Black.png" Width="350" Margin="0,0,0,10">
+                    <Image.Effect>
+                        <DropShadowEffect BlurRadius="3" ShadowDepth=".3">
+                            
+                        </DropShadowEffect>
+                    </Image.Effect>
+                </Image>
+
+                <TextBlock Text="Descubre, marca y comparte tus lugares favoritos con nuestra app. Únete a una comunidad de exploradores apasionados y haz que cada destino sea una experiencia única." Margin="13,45,13,0" TextWrapping="Wrap" TextAlignment="Center" FontSize="15"></TextBlock>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,80,0,0">
+                    <Label Content="¿Ya tienes cuenta?" FontSize="16"></Label>
+                    <TextBlock Text="Inicia sesión" FontSize="16" VerticalAlignment="Center" FontWeight="Bold" MouseLeftButtonDown="Button_Login_Click" Cursor="Hand">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="TextBlock.TextDecorations" Value="None" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

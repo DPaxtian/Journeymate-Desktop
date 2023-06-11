@@ -5,10 +5,115 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Client.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1180"
       Title="Page_Favorites">
 
-    <Grid>
-        
+    <Grid Background="#f3f3f3">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Label Content="Rutinas Favoritas" FontFamily="Inter" FontSize="28" FontWeight="SemiBold" Margin="40,20,0,0"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="40,25">
+                <Label Name="LabelRoutinesEmpty" Visibility="Hidden" Content="Sigue una rutina para comenzar" Opacity="0.6" FontFamily="Inter" FontSize="28" Margin="0,0,0,100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <ListView x:Name="List_FavoritesRoutines" Margin="10" SelectionMode="Single" SelectionChanged="ListRoutines_SelectionChanged">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border x:Name="ShadowBorder" CornerRadius="15" BorderThickness=".2" Background="#f3f3f3" Cursor="Hand">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="4" Color="Black" BlurRadius="15" Direction="290" Opacity=".25"/>
+                                </Border.Effect>
+                                <Border.ToolTip>
+                                    <ToolTip Content="Ver detalles">
+
+                                    </ToolTip>
+                                </Border.ToolTip>
+
+                                <Grid Margin="30,5" Width="970">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Margin="0,15">
+                                            <Label Content="{Binding Name}" HorizontalAlignment="Left" Margin="0,0,0,-8" Foreground="#000000"  FontSize="18" FontWeight="bold"></Label>
+                                            <Label Content="{Binding Country}" HorizontalAlignment="Left" Foreground="#000000" FontSize="16" FontWeight="Light"></Label>
+                                        </StackPanel>
+                                        <Image Grid.Column="1" Source="/Img/Icon_FullHeart.png" Height="25" HorizontalAlignment="Right" MouseLeftButtonDown="Button_Dislike_Clic" Cursor="Hand" VerticalAlignment="Top" Margin="0,25,0,0">
+                                            <Image.Effect>
+                                                <DropShadowEffect ShadowDepth="0" BlurRadius="7" Opacity=".50">
+
+                                                </DropShadowEffect>
+                                            </Image.Effect>
+                                            <Image.ToolTip>
+                                                <ToolTip Content="No me gusta">
+
+                                                </ToolTip>
+                                            </Image.ToolTip>
+                                        </Image>
+                                        <Image Grid.Column="1" Source="/Img/Icon_FullHeart.png" Height="25" Visibility="Collapsed" Cursor="Hand">
+                                            <Image.Effect>
+                                                <DropShadowEffect ShadowDepth="0" BlurRadius="7" Opacity=".50">
+
+                                                </DropShadowEffect>
+                                            </Image.Effect>
+                                            <Image.ToolTip>
+                                                <ToolTip Content="Quitar me gusta">
+
+                                                </ToolTip>
+                                            </Image.ToolTip>
+                                        </Image>
+                                    </Grid>
+
+                                    <TextBlock Grid.Row="1" Text="{Binding Routine_Description}" Margin="0,0,0,15" FontSize="16" HorizontalAlignment="Left"></TextBlock>
+
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="300"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Bottom" Margin="0,0,0,15">
+                                            <TextBlock Text="De: " FontSize="14"></TextBlock>
+                                            <TextBlock Text="{Binding Routine_Creator}" FontWeight="DemiBold" FontSize="14" ></TextBlock>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                                            
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="190,0,0,10">
+                                            <StackPanel Orientation="Horizontal" Margin="0,0,25,0" VerticalAlignment="Center">
+                                                <Image Source="/Img/Icon_LikesHeart.png" Width="25" Margin="0,10,0,0"/>
+                                                <TextBlock Text="{Binding Followers}" Margin="5,11,0,0"></TextBlock>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Source="/Img/Icon_Comments.png" Width="20" Margin="0,10,0,0"/>
+                                                <TextBlock Text="12" Margin="5,12,0,0" ></TextBlock>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+        </Grid>
     </Grid>
 </Page>

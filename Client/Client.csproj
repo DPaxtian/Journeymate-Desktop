@@ -80,7 +80,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Page_EditRoutine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Page_AddRoutine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Page_EditProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -104,14 +112,24 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Page_RoutineDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Page_SignUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Page_EditRoutine.xaml.cs">
+      <DependentUpon>Page_EditRoutine.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Page_AddRoutine.xaml.cs">
       <DependentUpon>Page_AddRoutine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page_EditProfile.xaml.cs">
+      <DependentUpon>Page_EditProfile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Page_Explorer.xaml.cs">
       <DependentUpon>Page_Explorer.xaml</DependentUpon>
@@ -127,6 +145,9 @@
     </Compile>
     <Compile Include="Pages\Page_Profile.xaml.cs">
       <DependentUpon>Page_Profile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page_RoutineDetails.xaml.cs">
+      <DependentUpon>Page_RoutineDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Page_SignUp.xaml.cs">
       <DependentUpon>Page_SignUp.xaml</DependentUpon>
@@ -159,7 +180,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Img\Icon_Add.png" />
-    <Resource Include="Img\Logo_Journeymate.png" />
     <Resource Include="Img\Icon_List.png" />
     <Resource Include="Img\Icon_Profile.png" />
     <Resource Include="Img\Icon_Search.png" />
@@ -173,6 +193,72 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Img\Login_Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\AddRoutine_Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\ProfilePicture_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_EditProfile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImageService\ImageService.csproj">
+      <Project>{71c33a9a-7190-4a43-8107-9e17c80c94d8}</Project>
+      <Name>ImageService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logic\Logic.csproj">
+      <Project>{c880b6bb-4fdc-48e7-86d9-0d498a03957d}</Project>
+      <Name>Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{b3c126e8-ff2b-43f5-b128-098f19a4c118}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Journeymate_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Signup_Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Jorneymate_Isotype_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_Division_Line_Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_Filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_EmptyHeart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_FullHeart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_Comments.png" />
+    <Resource Include="Img\Icon_LikesHeart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_Logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_Return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Check Mark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Icon_Unchecked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

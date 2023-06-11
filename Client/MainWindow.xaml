@@ -15,6 +15,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
         Title="Journeymate" Height="720" Width="1280">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
@@ -22,21 +23,21 @@
         </Grid.ColumnDefinitions>
 
         <materialDesign:Card Width="100" Grid.Column="0">
-            <TabControl Width="100" SelectionChanged="Navigator_Page"
+            <TabControl x:Name="TabPages" Width="100" SelectionChanged="Navigator_Page"
                 materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
                 SnapsToDevicePixels="True"
                 Style="{StaticResource MaterialDesignNavigationRailTabControl}"
                 TabStripPlacement="Left">
 
                 <materialDesign:NavigationRailAssist.FloatingContent>
-                    <Image Source="Img/Logo_Journeymate.png" Margin="0,10,0,100" Height="45" Width="45" Stretch="Fill"/>
+                    <Image Source="Img/Journeymate_logo.png" Margin="0,10,0,100" Height="45" Width="45" Stretch="Fill"/>
                 </materialDesign:NavigationRailAssist.FloatingContent>
 
                 <TabItem Width="100" x:Name="TabItem_Explorer">
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <Image Source="/Img/Icon_Search.png" Height="24" Width="24" Stretch="UniformToFill"/>
-                            <TextBlock HorizontalAlignment="Center" Text="Explorar" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="13" FontFamily="inter" FontWeight="DemiBold" Text="Explorar" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
@@ -45,15 +46,15 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <Image Source="/Img/Icon_List.png" Height="24" Width="24" Stretch="UniformToFill"/>
-                            <TextBlock HorizontalAlignment="Center" Text="Mis Listas" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="13" FontFamily="inter" FontWeight="DemiBold" Text="Mis Listas" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
 
                 <TabItem Width="100" x:Name="TabItem_AddRoutine">
                     <TabItem.Header>
-                        <StackPanel Width="auto" Height="auto">
-                            <Image Source="/Img/Icon_Add.png" Height="30" Width="30" Stretch="UniformToFill"/>
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="auto" Height="auto">
+                            <Image Source="/Img/Icon_Add.png" Height="50" Width="50" Stretch="UniformToFill"/>
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
@@ -62,7 +63,7 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <Image Source="/Img/Icon_Favorites.png" Height="23" Width="23" Stretch="Fill"/>
-                            <TextBlock HorizontalAlignment="Center" Text="Favoritos" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="13" FontFamily="inter" FontWeight="DemiBold" Text="Favoritos" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
@@ -71,7 +72,7 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <Image Source="/Img/Icon_Profile.png" Height="24" Width="24" Stretch="UniformToFill"/>
-                            <TextBlock HorizontalAlignment="Center" Text="Perfil" />
+                            <TextBlock HorizontalAlignment="Center" FontSize="13" FontFamily="inter" FontWeight="DemiBold" Text="Perfil" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>

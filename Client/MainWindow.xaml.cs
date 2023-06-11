@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,9 +21,13 @@ namespace Client
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow Instance { get; private set; }
+        public static User UserLogged { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            Instance = this;
         }
 
         private void Navigator_Page(object sender, SelectionChangedEventArgs e)
@@ -32,21 +38,68 @@ namespace Client
             }
             else if (TabItem_MyLists.IsSelected)
             {
-                Frame_Page.Navigate(new Uri("/Pages/Page_MyLists.xaml", UriKind.Relative));
+                if (UserLogged != null)
+                {
+                    Frame_Page.Navigate(new Uri("/Pages/Page_MyLists.xaml", UriKind.Relative));
+                }
+                else
+                {
+                    TabPages.SelectedItem = TabItem_Profile;
+                }
             }
             else if (TabItem_AddRoutine.IsSelected)
             {
-                Frame_Page.Navigate(new Uri("/Pages/Page_AddRoutine.xaml", UriKind.Relative));
+                if(UserLogged != null)
+                {
+                    Frame_Page.Navigate(new Uri("/Pages/Page_AddRoutine.xaml", UriKind.Relative));
+                }
+                else
+                {
+                    TabPages.SelectedItem = TabItem_Profile;
+                }
             }
             else if(TabItem_Favorites.IsSelected)
             {
-                Frame_Page.Navigate(new Uri("/Pages/Page_Favorites.xaml", UriKind.Relative));
+                if (UserLogged != null)
+                {
+                    Frame_Page.Navigate(new Uri("/Pages/Page_Favorites.xaml", UriKind.Relative));
+                }
+                else
+                {
+                    TabPages.SelectedItem = TabItem_Profile;
+                }
             }
             else if(TabItem_Profile.IsSelected)
             {
-                Frame_Page.Navigate(new Uri("/Pages/Page_Login.xaml", UriKind.Relative));
+                if (UserLogged != null)
+                {
+                    Frame_Page.Navigate(new Uri("/Pages/Page_Profile.xaml", UriKind.Relative));
+                }
+                else
+                {
+                    Frame_Page.Navigate(new Uri("/Pages/Page_Login.xaml", UriKind.Relative));
+                }
             }
+        }
+
+        
+        public void NavigateToExplorer()
+        {
+            TabPages.SelectedItem = TabItem_Explorer;
+        }
+
+
+        public void NavigateToFavoritesList()
+        {
+            TabPages.SelectedItem = TabItem_Favorites;
+        }
+
+
+        public void NavigateToLogin()
+        {
+            TabPages.SelectedItem = TabItem_Profile;
         }
 
     }
 }
+

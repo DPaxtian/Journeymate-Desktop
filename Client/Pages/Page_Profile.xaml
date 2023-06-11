@@ -1,14 +1,79 @@
 ﻿<Page x:Class="Client.Pages.Page_Profile"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Client.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1180"
       Title="Page_Profile">
 
-    <Grid>
+    <Page.Resources>
+        <Style x:Key="UnderlineLabel" TargetType="Label">
+            <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#f3f3f3">
+        <Grid HorizontalAlignment="Center" Margin="150,0,0,0" Width="1000">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Mi Perfil" FontFamily="Inter" FontSize="30" FontWeight="SemiBold" Margin="50,30,0,0"/>
+                
+                <Image Source="/Img/Icon_EditProfile.png" Cursor="Hand" MouseLeftButtonDown="Button_EditProfile_Clic" Width="30" Height="30" Stretch="UniformToFill" Margin="20,25,0,0">
+                   <Image.ToolTip>
+                        <ToolTip Content="Editar perfil"></ToolTip>
+                   </Image.ToolTip>
+                </Image>
+                
+                    <Image Source="/Img/Icon_Logout.png" Width="25" Height="25" Margin="630,20,0,0" Cursor="Hand" MouseLeftButtonDown="Button_Logout_Clic">
+                        <Image.ToolTip>
+                            <ToolTip Content="Cerrar Sesión"></ToolTip>
+                        </Image.ToolTip>
+                    </Image>
+                
+                </StackPanel>
+
+
+              
+                    <StackPanel Orientation="Horizontal">
+
+                        <Image Margin="40,20,0,0" Name="Image_ProfilePicture" Width="300" Height="220">
+                            <Image.Clip>
+                                <EllipseGeometry Center="100,100" RadiusX="100" RadiusY="100"/>
+                            </Image.Clip>
+                        </Image>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Hola!, soy" Height="50" Foreground="#AAAAAA" HorizontalContentAlignment="Left" Margin="0,20,0,0" FontSize="32" FontFamily="Inter"/>
+                            <TextBlock Text="Daniel Paxtian" Height="50" TextDecorations="Underline" Margin="5,32,0,0" Name="TextBlock_Name" FontWeight="SemiBold" FontSize="32" FontFamily="Inter"/>
+                        </StackPanel>
+                    </StackPanel>
+               
+
+                
+        </StackPanel>
+
+        
+            <Label Content="Nombre de usuario" Margin="40,0,0,20" FontFamily="Inter" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label x:Name="Label_Username" Content="dpax" Margin="40,50,0,0" FontFamily="Inter" FontWeight="Light" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <Label Content="Correo Electronico" Margin="0,0,0,20" FontFamily="Inter" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label x:Name="Label_Email" Content="daniel.paxtian@hotmail.com" Margin="390,50,0,0" Width="600" FontWeight="Light" FontFamily="Inter" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Label Content="Numero Telefonico" Margin="40,200,0,0" FontFamily="Inter" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Label x:Name="Label_PhoneNumber" Content="9848073096" Margin="40,280,0,0" Width="300" FontWeight="Light" FontFamily="Inter" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <Label Content="Edad" Margin="0,200,110,0" FontFamily="Inter" FontSize="24" Width="100" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label x:Name="Label_Age" Content="24" Margin="0,280,100,0" Width="100" FontFamily="Inter" FontWeight="Light" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <Label Content="Ubicación" Margin="0,200,220,0" Width="300" FontFamily="Inter" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <Label x:Name="Label_Location" Content="Playa del carmen, Quintana Roo" Margin="0,280,70,0" FontWeight="Light" Width="450" FontFamily="Inter" FontSize="22" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+            <Label Content="Descripción" Margin="40,0,0,130" FontFamily="Inter" FontSize="24" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBlock x:Name="Label_Description" Text="Ejemplo d" TextWrapping="Wrap" Width="800" FontWeight="Light" Height="90" Margin="45,0,0,40" FontFamily="Inter" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+
+        </Grid>
         
     </Grid>
 </Page>

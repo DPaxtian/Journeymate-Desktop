@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Class1
+    public enum StatusCode
     {
+       Ok = 200,
+       ProccessError = 500,
+       EntryError = 404,
+       Unautorized = 401,
+       Conflict = 409
     }
 }

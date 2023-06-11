@@ -5,12 +5,189 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Client.Pages"
+      FontFamily="Inter"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1080"
       ShowsNavigationUI="False"
       Title="Page_Explorer">
 
+    <Page.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="4"
+                        Padding="{TemplateBinding Padding}">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        
+    </Page.Resources>
+
     <Grid>
-        <Button Width="100" Content="_MID" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Resource name: MaterialDesignRaisedButton" />
+        <Grid.Background>
+            <SolidColorBrush Color="#f3f3f3"></SolidColorBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions> 
+        
+        <Grid Grid.Row="0">
+            <StackPanel Margin="50,20,50,0">
+                <TextBlock Text="Explorar" FontSize="22" FontFamily="Inter" FontWeight="Bold" Margin="0,0,0,10"></TextBlock>
+                <Border Width="650" Height="35" Background="#F3F3F3" CornerRadius="15">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="25" Opacity=".25">
+                            
+                        </DropShadowEffect>
+                    </Border.Effect>
+
+                    <TextBox x:Name="TextBox_Search" Loaded="TexBox_Loaded" SelectionChanged="TexboxSearch_SelectionChanged">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="TextBox">
+                                            <Grid>
+                                                <Border Background="{TemplateBinding Background}"
+                                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                                        CornerRadius="4"
+                                                        Padding="{TemplateBinding Padding}">
+                                                    <ScrollViewer x:Name="PART_ContentHost"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                                </Border>
+                                                <Image Source="/Img/Icon_Search.png" Opacity="0.7" Height="25" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0,0,0"/>
+                                                <Image Source="/Img/Icon_Division_Line_Search.png" Height="25" Opacity=".25" HorizontalAlignment="Right" Margin="0,0,50,0"/>
+                                                <Image Source="/Img/Icon_Filter.png" Height="20" Opacity=".25" HorizontalAlignment="Right" Margin="0,0,15,0" Cursor="Hand" MouseLeftButtonDown="Button_Filters_Click">
+                                                    <Image.ToolTip>
+                                                        <ToolTip Content="Aplicar filtros"></ToolTip>
+                                                    </Image.ToolTip>
+                                                </Image>
+
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+
+                </Border>
+            </StackPanel>
+        </Grid>
+
+            
+        <Grid Grid.Row="1" Margin="40,25">
+            <ListView x:Name="List_Routines" Margin="10" SelectionMode="Single" SelectionChanged="ListRoutines_SelectionChanged">
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border x:Name="ShadowBorder" CornerRadius="15" BorderThickness=".2" Background="#f3f3f3" Cursor="Hand">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="4" Color="Black" BlurRadius="15" Direction="290" Opacity=".25"/>
+                            </Border.Effect>
+                            <Border.ToolTip>
+                                <ToolTip Content="Ver detalles">
+
+                                </ToolTip>
+                            </Border.ToolTip>
+
+                            <Grid Margin="30,5" Width="970">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" Margin="0,15">
+                                        <Label Content="{Binding Name}" HorizontalAlignment="Left" Margin="0,0,0,-8" Foreground="#000000"  FontSize="18" FontWeight="bold"></Label>
+                                        <Label Content="{Binding Country}" HorizontalAlignment="Left" Foreground="#000000" FontSize="16" FontWeight="Light"></Label>
+                                    </StackPanel>
+                                    <Image Name="Image_EmptyHeart" Visibility="Visible" Grid.Column="1" Source="/Img/Icon_EmptyHeart.png" Height="25" PreviewMouseLeftButtonDown="Button_Like_Clic" HorizontalAlignment="Right" Cursor="Hand" VerticalAlignment="Top" Margin="0,25,0,0">
+                                        <Image.Effect>
+                                            <DropShadowEffect ShadowDepth="0" BlurRadius="7" Opacity=".50">
+
+                                            </DropShadowEffect>
+                                        </Image.Effect>
+                                        <Image.ToolTip>
+                                            <ToolTip Content="Me gusta">
+
+                                            </ToolTip>
+                                        </Image.ToolTip>
+                                    </Image>
+                                    <Image Name="Image_FullHeart" Grid.Column="1" Source="/Img/Icon_FullHeart.png" Height="25" Visibility="Hidden" Cursor="Hand" PreviewMouseLeftButtonDown="Button_Like_Clic" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,25,0,0">
+                                        <Image.Effect>
+                                            <DropShadowEffect ShadowDepth="0" BlurRadius="7" Opacity=".50">
+
+                                            </DropShadowEffect>
+                                        </Image.Effect>
+                                        <Image.ToolTip>
+                                            <ToolTip Content="Quitar me gusta">
+                                                
+                                            </ToolTip>
+                                        </Image.ToolTip>
+                                    </Image>
+                                </Grid>
+
+                                <TextBlock Grid.Row="1" Text="{Binding Routine_Description}" Margin="0,0,0,15" FontSize="16" HorizontalAlignment="Left"></TextBlock>
+
+                                <Grid Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="300"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Bottom" Margin="0,0,0,15">
+                                        <TextBlock Text="De: " FontSize="14"></TextBlock>
+                                        <TextBlock Text="{Binding Routine_Creator}" FontWeight="DemiBold" FontSize="14" ></TextBlock>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                                        
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Center" Margin="170,0,0,10">
+                                        <StackPanel Orientation="Horizontal" Margin="0,0,30,0" VerticalAlignment="Center">
+                                            <Image Source="/Img/Icon_LikesHeart.png" Width="25" Margin="10,10,0,0"/>
+                                            <TextBlock Text="{Binding Followers}" Margin="5,11,0,0"></TextBlock>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="/Img/Icon_Comments.png" Width="20" Margin="0,7,0,0"/>
+                                            <TextBlock Text="12" Margin="6,14,0,0" ></TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+       
     </Grid>
 </Page>

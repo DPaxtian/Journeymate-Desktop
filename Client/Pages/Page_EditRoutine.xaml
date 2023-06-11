@@ -1,0 +1,161 @@
+﻿<Page x:Class="Client.Pages.Page_EditRoutine"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Client.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1180"
+      Title="EditRoutine">
+
+
+    <Page.Resources>
+        <ImageBrush x:Key="AddRoutine_Background" Opacity="1" ImageSource="/Img/AddRoutine_Background.jpg" Stretch="UniformToFill"/>
+
+        <Style x:Key="CustomMaterialDesignRaisedLightButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent"
+                        BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#f3f3f3">
+        <Border>
+            <StackPanel>
+                <Label Content="Editar Rutina" Foreground="Black" FontWeight="SemiBold" FontFamily="Inter" Margin="30,20,0,0"  FontSize="26"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Título" Foreground="Black" FontWeight="SemiBold" FontFamily="Inter" Margin="30,30,0,0"  FontSize="20"/>
+                    <Label Name="LabelTitleRoutineError" Visibility="Hidden" Content="*" Foreground="Red" FontWeight="SemiBold" FontFamily="Inter" Margin="0,30,0,0"  FontSize="20"/>
+                    <Label Name="LabelFieldError" Visibility="Hidden" Content="* Campo Requerido" Foreground="Red" FontFamily="Inter" Margin="830,10,0,0"  FontSize="20"/>
+                </StackPanel>
+
+
+                <Border Width="1100" Height="35" Background="#f3f3f3" CornerRadius="7">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="25" Opacity="0.25" />
+                    </Border.Effect>
+                    <TextBox Name="TextBox_RoutineTitle" MaxLength="50" FontSize="16" Style="{StaticResource MaterialDesignTextBox}"/>
+                </Border>
+
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <Label Content="Ciudad" Foreground="Black" FontWeight="SemiBold" FontFamily="Inter" Margin="30,10,0,0"  FontSize="20"/>
+                    <Label Name="LabelCityError" Visibility="Hidden" Content="*" Foreground="Red" FontWeight="SemiBold" FontFamily="Inter" Margin="0,0,0,0"  FontSize="20"/>
+                    <Label Content="País" Foreground="Black" FontWeight="SemiBold" FontFamily="Inter" Margin="480,10,0,0"  FontSize="20"/>
+                    <Label Name="LabelCountryError" Visibility="Hidden" Content="*" Foreground="Red" FontWeight="SemiBold" FontFamily="Inter" Margin="0,10,0,0"  FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Border Background="#f3f3f3" Margin="30,0,30,0" CornerRadius="7">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="25" Opacity="0.25" />
+                        </Border.Effect>
+                        <TextBox Name="TextBox_City" MaxLength="30" FontSize="16" Width="535" Height="35" Style="{StaticResource MaterialDesignTextBox}"/>
+                    </Border>
+
+                    <Border Background="#f3f3f3" CornerRadius="7">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="25" Opacity="0.25" />
+                        </Border.Effect>
+                        <TextBox Name="TextBox_Country" MaxLength="30" FontSize="16" Width="535" Height="35" Style="{StaticResource MaterialDesignTextBox}"/>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <Label Content="Estado" Foreground="Black" FontWeight="SemiBold" FontFamily="Inter" Margin="30,10,0,0"  FontSize="20"/>
+                    <Label Name="LabelStateError" Visibility="Hidden" Content="*" Foreground="Red" FontWeight="SemiBold" FontFamily="Inter" Margin="0,10,0,0"  FontSize="20"/>
+                    <Label Content="Localidad" Foreground="Black" FontWeight="SemiBold" FontFamily="Inter" Margin="480,10,0,0"  FontSize="20"/>
+                    <Label Name="LabelTownError" Visibility="Hidden" Content="*" Foreground="Red" FontWeight="SemiBold" FontFamily="Inter" Margin="0,10,0,0"  FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Border Background="#f3f3f3" CornerRadius="7" Margin="30,0,30,0">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="25" Opacity="0.25" />
+                        </Border.Effect>
+                        <TextBox Name="TextBox_StateCountry" MaxLength="30" FontSize="16"  Width="535" Height="35" Style="{StaticResource MaterialDesignTextBox}"/>
+                    </Border>
+
+                    <Border Background="#f3f3f3" CornerRadius="7">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="25" Opacity="0.25" />
+                        </Border.Effect>
+                        <TextBox Name="TextBox_Town" MaxLength="30" FontSize="16" Width="535" Height="35" Style="{StaticResource MaterialDesignTextBox}"/>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <Label Content="Categoria" Foreground="Black" FontWeight="SemiBold" FontFamily="Inter" Margin="30,10,0,0"  FontSize="20"/>
+                    <Label Name="LabelCategoryError" Visibility="Hidden" Content="*" Foreground="Red" FontWeight="SemiBold" FontFamily="Inter" Margin="0,10,0,0"  FontSize="20"/>
+                    <Label Content="Visibilidad" Foreground="Black" FontWeight="SemiBold" FontFamily="Inter" Margin="450,10,0,0"  FontSize="20"/>
+                    <Label Name="LabelVisibilityError" Visibility="Hidden" Content="*" Foreground="Red" FontWeight="SemiBold" FontFamily="Inter" Margin="0,10,0,0"  FontSize="20"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Border Background="#f3f3f3" CornerRadius="7" Margin="30,0,30,0">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="25" Opacity="0.25" />
+                        </Border.Effect>
+                        <ComboBox Name="ComboBox_LabelCategory" FontSize="16" Width="535" Height="35"/>
+                    </Border>
+
+                    <Border Background="#f3f3f3" CornerRadius="7">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="25" Opacity="0.25" />
+                        </Border.Effect>
+                        <ComboBox Name="ComboBox_Visibilty" FontSize="16" Width="535" Height="35"/>
+                    </Border>
+
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <Label Content="Descripción" Foreground="Black" FontWeight="SemiBold" FontFamily="Inter" Margin="30,10,0,0"  FontSize="20"/>
+                    <Label Name="LabelDescriptionError" Visibility="Hidden" Content="*" Foreground="Red" FontWeight="SemiBold" FontFamily="Inter" Margin="0,10,0,0"  FontSize="20"/>
+                </StackPanel>
+
+                <Border Background="#f3f3f3" CornerRadius="7" Margin="0,0,0,20" Width="1100">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="25" Opacity="0.25" />
+                    </Border.Effect>
+                    <TextBox Name="TextBox_RoutineDescription" MaxLength="200" TextWrapping="Wrap" FontSize="16" Height="50" Style="{StaticResource MaterialDesignTextBox}"/>
+                </Border>
+
+
+                <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                    <Border Margin="30,0,600,20" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="25" Opacity="0.25"/>
+                        </Border.Effect>
+                        <Button Width="250" Height="45" FontFamily="Inter" Content="Cancelar" FontSize="16" IsDefault="True" Click="Button_Cancel_Clic" Foreground="#f3f3f3" Style="{StaticResource CustomMaterialDesignRaisedLightButton}" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                            <Button.Background>
+                                <SolidColorBrush Color="#FF4F52" Opacity="1"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+
+
+                    <Border Margin="0,0,0,20" Width="250" Height="45" VerticalAlignment="Bottom">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="25" Opacity="0.25"/>
+                        </Border.Effect>
+                        <Button Width="250" Height="45" FontFamily="Inter" Content="Actualizar Rutina" FontSize="16" IsDefault="True" Click="Button_UpdateRoutine_Clic" Foreground="#f3f3f3" Style="{StaticResource CustomMaterialDesignRaisedLightButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                            <Button.Background>
+                                <SolidColorBrush Color="#4193CE" Opacity="1"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
